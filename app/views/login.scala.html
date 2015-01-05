@@ -1,0 +1,22 @@
+@(form: Form[Authentication.AuthenticatedUser])
+
+@main("Authentification", null) {
+
+  @helper.form(routes.Authentication.authenticate) {
+
+    <h2>Qui êtes vous ?</h2>
+
+    @if(form.hasGlobalErrors) {
+      <p class="error">@form.globalError.message</p>
+    }
+
+    @if(flash.contains("success")) {
+      <p class="success">@flash.get("success")</p>
+    }
+
+    <p><input type="email" name="email" placeholder="Email"
+    value="@form("email").value"></p>
+    <p><input type="password" name="password" placeholder="Password"></p>
+    <p><button class="btn" type="submit">Login</button></p>
+  }
+}

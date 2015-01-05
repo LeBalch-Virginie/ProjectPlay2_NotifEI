@@ -1,0 +1,15 @@
+# Users
+
+users:
+
+    - !!models.User
+        email:      ph.charriere@gmail.com
+        name:       k33g
+        password:   play
+
+    - !!models.User
+        email:      bob@morane.com
+        name:       bob
+        password:   indochine
+
+
