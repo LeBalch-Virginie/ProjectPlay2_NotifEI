@@ -19,6 +19,12 @@ create table classe_pharmaco (
   constraint pk_classe_pharmaco primary key (id))
 ;
 
+create table dispo_medical (
+  id                        bigint auto_increment not null,
+  nom                       varchar(255),
+  constraint pk_dispo_medical primary key (id))
+;
+
 create table effet_indesirable (
   id                        bigint auto_increment not null,
   label                     varchar(255),
@@ -122,6 +128,8 @@ drop table classe_pharmaco;
 drop table substance_classe_pharmaco;
 
 drop table effet_indesirable_classe_pharmaco;
+
+drop table dispo_medical;
 
 drop table effet_indesirable;
 

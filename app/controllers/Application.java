@@ -19,6 +19,7 @@ public class Application extends Controller {
                 Substance.find.orderBy("id").findList(),
                 Medicament.find.order("id").findList(),
                 Utilisateur.find.orderBy("login").findList(),
+                Dispo_medical.find.orderBy("id").findList(),
                 User.find.byId(request().username())
         ));
     }

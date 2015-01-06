@@ -1,0 +1,23 @@
+@(dispo_medical: Dispo_medical, dispo_medicalForm: Form[Dispo_medical], user: User)
+
+@import helper._
+
+@main("Modifier un dispositif medical", user) {
+      <p>id: @dispo_medical.getId</p>
+      @form(routes.Dispo_medicaux.update(dispo_medical.getId)) {
+            @inputText(dispo_medicalForm("nom"))
+            <input type="submit" value="Update">
+        }
+}
+
+
+
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+
+</body>
+</html>

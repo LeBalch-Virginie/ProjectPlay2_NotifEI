@@ -17,6 +17,7 @@ POST        /Effet_indesirable                        controllers.Effet_indesira
 POST        /Substance                                controllers.Substances.add()
 POST        /Medicament/ajouter                       controllers.Medicaments.add()
 POST        /Utilisateur                              controllers.Utilisateurs.add()
+POST        /Dispo_medical                    controllers.Dispo_medicaux.add()
 GET         /Medicament/supprimer/:id                 controllers.Medicaments.delete(id: Long)
 GET         /Medicament/modifier/:id                  controllers.Medicaments.edit(id: Long)
 POST        /Medicament/enregistrer/:id               controllers.Medicaments.update(id: Long)
@@ -26,7 +27,9 @@ POST        /Effet_indesirable/enregistrer/:id        controllers.Effet_indesira
 GET         /Substance/supprimer/:id                  controllers.Substances.delete(id: Long)
 GET         /Substance/modifier/:id                   controllers.Substances.edit(id: Long)
 POST        /Substance/enregistrer/:id                controllers.Substances.update(id: Long)
-
+GET         /Dispo_medical/supprimer/:id              controllers.Dispo_medicaux.delete(id: Long)
+GET         /Dispo_medical/modifier/:id               controllers.Dispo_medicaux.edit(id: Long)
+POST        /Dispo_medical/enregistrer/:id            controllers.Dispo_medicaux.update(id: Long)
 
 # Authentication
 GET         /login                                    controllers.Authentication.login()

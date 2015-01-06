@@ -4,6 +4,7 @@
     substances : List[models.Substance],
     medicaments : List[models.Medicament],
     utilisateurs : List[models.Utilisateur],
+    dispositif_medicaux : List[models.Dispo_medical],
     user: User
 )
 
@@ -73,6 +74,27 @@
             @medicament.getId() @medicament.getNom()
                         - <a href="@routes.Medicaments.edit(medicament.getId())">Modifier</a>
                         - <a href="@routes.Medicaments.delete(medicament.getId())">Supprimer</a>
+        </li>
+    }
+    </ul>
+
+    <!-- Formulaire de saisie : dispositif medical -->
+    <fieldset>
+        <h2>Nouveau dispositif medical</h2>
+        <form method="post" action="@routes.Dispo_medicaux.add()">
+
+            <input name="nom" placeholder="nom">
+            <button type="submit">Ajouter un dispositif medical</button>
+        </form>
+    </fieldset>
+
+    <!-- Liste des medicaments -->
+    <ul>
+    @for(dispo_medical <- dispositif_medicaux) {
+        <li>
+            @dispo_medical.getId() @dispo_medical.getNom()
+            - <a href="@routes.Dispo_medicaux.edit(dispo_medical.getId())">Modifier</a>
+            - <a href="@routes.Dispo_medicaux.delete(dispo_medical.getId())">Supprimer</a>
         </li>
     }
     </ul>
