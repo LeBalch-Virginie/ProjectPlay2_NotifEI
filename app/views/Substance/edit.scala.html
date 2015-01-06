@@ -1,0 +1,23 @@
+@(substance: Substance, substanceForm: Form[Substance], user: User)
+
+@import helper._
+
+@main("Modifier une substance", user) {
+      <p>id: @substance.getId</p>
+      @form(routes.Substances.update(substance.getId)) {
+            @inputText(substanceForm("label"))
+            <input type="submit" value="Update">
+        }
+}
+
+
+
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+
+</body>
+</html>

@@ -48,7 +48,10 @@
     <!-- Liste des substances -->
     <ul>
     @for(substance <- substances) {
-        <li>@substance.getId() @substance.getLabel()</li>
+        <li>@substance.getId() @substance.getLabel()
+            - <a href="@routes.Substances.edit(substance.getId())">Modifier</a>
+            - <a href="@routes.Substances.delete(substance.getId())">Supprimer</a>
+        </li>
     }
     </ul>
 
