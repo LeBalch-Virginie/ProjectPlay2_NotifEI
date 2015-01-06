@@ -13,11 +13,18 @@ POST        /Effet_indesirable        controllers.Effet_indesirables.add()
 POST        /Substance                controllers.Substances.add()
 POST        /Medicament               controllers.Medicaments.add()
 POST        /Utilisateur              controllers.Utilisateurs.add()
+POST        /Effet_indesirable            controllers.Effet_indesirables.add()
+POST        /Substance                    controllers.Substances.add()
+POST        /Medicament/ajouter           controllers.Medicaments.add()
+POST        /Utilisateur                  controllers.Utilisateurs.add()
+GET         /Medicament/supprimer/:id     controllers.Medicaments.delete(id: Long)
+GET         /Medicament/modifier/:id      controllers.Medicaments.edit(id: Long)
+POST        /Medicament/enregistrer/:id   controllers.Medicaments.update(id: Long)
 
 # Authentication
-GET     /login                              controllers.Authentication.login()
-POST    /login                              controllers.Authentication.authenticate()
-GET     /logout                             controllers.Authentication.logout()
+GET         /login                    controllers.Authentication.login()
+POST        /login                    controllers.Authentication.authenticate()
+GET         /logout                   controllers.Authentication.logout()
 
 # Map static resources from the /public folder to the /assets URL path
 GET         /assets/*file             controllers.Assets.at(path="/public", file)

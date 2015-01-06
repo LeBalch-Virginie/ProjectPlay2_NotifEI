@@ -25,6 +25,8 @@ public class Medicament extends Model{
         return nom;
     }
 
+    public void setId(Long id) { this.id = id; }
+
     public void setNom(String nom) {
         this.nom = nom;
     }

@@ -1,0 +1,23 @@
+@(medicament: Medicament, medicamentForm: Form[Medicament], user: User)
+
+@import helper._
+
+@main("Modifier un médicament", user) {
+      <p>id: @medicament.getId</p>
+      @form(routes.Medicaments.update(medicament.getId)) {
+            @inputText(medicamentForm("nom"))
+            <input type="submit" value="Update">
+        }
+}
+
+
+
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+
+</body>
+</html>

@@ -62,7 +62,11 @@
     <!-- Liste des medicaments -->
     <ul>
     @for(medicament <- medicaments) {
-        <li>@medicament.getId() @medicament.getNom() </li>
+        <li>
+            @medicament.getId() @medicament.getNom()
+                        - <a href="@routes.Medicaments.edit(medicament.getId())">Modifier</a>
+                        - <a href="@routes.Medicaments.delete(medicament.getId())">Supprimer</a>
+        </li>
     }
     </ul>
 
