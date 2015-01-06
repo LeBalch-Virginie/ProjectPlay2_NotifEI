@@ -33,8 +33,8 @@ public class Medicaments extends Controller {
         Form<Medicament> filledForm = Form.form(Medicament.class).bindFromRequest();
         if (filledForm.hasErrors()) {
                 User user = User.find.byId(request().username());
-                Medicament thing = Medicament.find.where().idEq(id).findUnique();
-               return badRequest(views.html.Medicament.edit.render(thing, filledForm, user));
+                Medicament medicament = Medicament.find.where().idEq(id).findUnique();
+               return badRequest(views.html.Medicament.edit.render(medicament, filledForm, user));
         } else {
                 Medicament medicament = filledForm.get();
                 medicament.setId(id);

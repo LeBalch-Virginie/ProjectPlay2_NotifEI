@@ -1,0 +1,23 @@
+@(effet_indesirable: Effet_indesirable, effet_indesirableForm: Form[Effet_indesirable], user: User)
+
+@import helper._
+
+@main("Modifier un effet indesirable", user) {
+      <p>id: @effet_indesirable.getId</p>
+      @form(routes.Effet_indesirables.update(effet_indesirable.getId)) {
+            @inputText(effet_indesirableForm("label"))
+            <input type="submit" value="Update">
+        }
+}
+
+
+
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+
+</body>
+</html>

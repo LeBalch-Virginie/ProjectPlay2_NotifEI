@@ -26,6 +26,8 @@ public class Effet_indesirable extends Model {
         return id;
     }
 
+    public void setId(Long id) { this.id = id; }
+
     public static Finder<Long, Effet_indesirable> find =
             new Finder<Long, Effet_indesirable>(Long.class, Effet_indesirable.class);
 

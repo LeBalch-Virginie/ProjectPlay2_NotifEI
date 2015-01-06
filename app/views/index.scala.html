@@ -27,7 +27,11 @@
     <!-- Liste des effet_indesirable -->
     <ul>
     @for(effet_indesirable <- effet_indesirables) {
-        <li>@effet_indesirable.getId() @effet_indesirable.getLabel()</li>
+        <li>
+            @effet_indesirable.getId() @effet_indesirable.getLabel()
+            - <a href="@routes.Effet_indesirables.edit(effet_indesirable.getId())">Modifier</a>
+            - <a href="@routes.Effet_indesirables.delete(effet_indesirable.getId())">Supprimer</a>
+        </li>
     }
     </ul>
 
