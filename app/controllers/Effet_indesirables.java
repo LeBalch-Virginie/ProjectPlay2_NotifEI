@@ -13,6 +13,12 @@ import play.mvc.Security;
  */
 @Security.Authenticated(Secured.class)
 public class Effet_indesirables extends Controller {
+    public static Result index() {
+        return ok(views.html.Effet_indesirable.index.render(
+                Effet_indesirable.find.orderBy("id").findList(),
+                User.find.byId(request().username())
+        ));
+    }
 
     public static Result add() {
         User user = User.find.byId(request().username());

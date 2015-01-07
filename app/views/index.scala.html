@@ -1,103 +1,17 @@
-@(
-    message: String,
-    effet_indesirables : List[models.Effet_indesirable],
-    substances : List[models.Substance],
-    medicaments : List[models.Medicament],
-    utilisateurs : List[models.Utilisateur],
-    dispositif_medicaux : List[models.Dispo_medical],
-    user: User
-)
+@(utilisateurs : List[models.Utilisateur], user: User)
 
 @main("NotifIE", user) {
-
-
-
     <h1>NotifIE</h1>
-    <p>@message</p>
 
-    <!-- Formulaire de saisie : effet_indesirable -->
     <fieldset>
-        <h2>Nouveau effet_indesirable</h2>
-        <form method="post" action="@routes.Effet_indesirables.add()">
-
-            <input name="label" placeholder="label">
-            <button type="submit">Ajouter un effet_indesirable</button>
-        </form>
+        <legend>Administration</legend>
+        <ul>
+            <li><a href="@routes.Effet_indesirables.index()">Les effets indésirables</a></li>
+            <li><a href="@routes.Substances.index()">Les substances</a></li>
+            <li><a href="@routes.Medicaments.index()">Les médicaments</a></li>
+            <li><a href="@routes.Dispo_medicaux.index()">Les dispositifs médicaux</a></li>
+        </ul>
     </fieldset>
-
-    <!-- Liste des effet_indesirable -->
-    <ul>
-    @for(effet_indesirable <- effet_indesirables) {
-        <li>
-            @effet_indesirable.getId() @effet_indesirable.getLabel()
-            - <a href="@routes.Effet_indesirables.edit(effet_indesirable.getId())">Modifier</a>
-            - <a href="@routes.Effet_indesirables.delete(effet_indesirable.getId())">Supprimer</a>
-        </li>
-    }
-    </ul>
-
-    <!-- Formulaire de saisie : substances -->
-    <fieldset>
-        <h2>Nouvelle substance</h2>
-        <form method="post" action="@routes.Substances.add()">
-
-            <input name="label" placeholder="label">
-            <button type="submit">Ajouter une substance</button>
-        </form>
-    </fieldset>
-
-    <!-- Liste des substances -->
-    <ul>
-    @for(substance <- substances) {
-        <li>@substance.getId() @substance.getLabel()
-            - <a href="@routes.Substances.edit(substance.getId())">Modifier</a>
-            - <a href="@routes.Substances.delete(substance.getId())">Supprimer</a>
-        </li>
-    }
-    </ul>
-
-
-    <!-- Formulaire de saisie : medicament -->
-    <fieldset>
-        <h2>Nouveau medicament</h2>
-        <form method="post" action="@routes.Medicaments.add()">
-
-            <input name="nom" placeholder="nom">
-            <button type="submit">Ajouter un medicament</button>
-        </form>
-    </fieldset>
-
-    <!-- Liste des medicaments -->
-    <ul>
-    @for(medicament <- medicaments) {
-        <li>
-            @medicament.getId() @medicament.getNom()
-                        - <a href="@routes.Medicaments.edit(medicament.getId())">Modifier</a>
-                        - <a href="@routes.Medicaments.delete(medicament.getId())">Supprimer</a>
-        </li>
-    }
-    </ul>
-
-    <!-- Formulaire de saisie : dispositif medical -->
-    <fieldset>
-        <h2>Nouveau dispositif medical</h2>
-        <form method="post" action="@routes.Dispo_medicaux.add()">
-
-            <input name="nom" placeholder="nom">
-            <button type="submit">Ajouter un dispositif medical</button>
-        </form>
-    </fieldset>
-
-    <!-- Liste des medicaments -->
-    <ul>
-    @for(dispo_medical <- dispositif_medicaux) {
-        <li>
-            @dispo_medical.getId() @dispo_medical.getNom()
-            - <a href="@routes.Dispo_medicaux.edit(dispo_medical.getId())">Modifier</a>
-            - <a href="@routes.Dispo_medicaux.delete(dispo_medical.getId())">Supprimer</a>
-        </li>
-    }
-    </ul>
 
     <!-- Formulaire de saisie : utilisateur -->
     <fieldset>

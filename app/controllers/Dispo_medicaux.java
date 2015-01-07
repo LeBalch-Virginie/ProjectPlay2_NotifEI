@@ -14,6 +14,12 @@ import play.mvc.Security;
  */
 @Security.Authenticated(Secured.class)
 public class Dispo_medicaux extends Controller {
+    public static Result index() {
+        return ok(views.html.Dispo_medical.index.render(
+                Dispo_medical.find.orderBy("id").findList(),
+                User.find.byId(request().username())
+        ));
+    }
 
     public static Result add() {
         User user = User.find.byId(request().username());

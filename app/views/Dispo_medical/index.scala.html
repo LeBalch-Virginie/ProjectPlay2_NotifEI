@@ -1,0 +1,26 @@
+@(dispositif_medicaux: List[Dispo_medical], user: User)
+
+@import helper._
+
+@main("Modifier un dispositif medical", user) {
+    <fieldset>
+        <h2>Nouveau dispositif medical</h2>
+        <form method="post" action="@routes.Dispo_medicaux.add()">
+
+            <input name="nom" placeholder="nom">
+            <button type="submit">Ajouter un dispositif medical</button>
+        </form>
+    </fieldset>
+
+    <!-- Liste des medicaments -->
+    <ul>
+        @for(dispo_medical <- dispositif_medicaux) {
+        <li>
+            @dispo_medical.getId() @dispo_medical.getNom()
+            - <a href="@routes.Dispo_medicaux.edit(dispo_medical.getId())">Modifier</a>
+            - <a href="@routes.Dispo_medicaux.delete(dispo_medical.getId())">Supprimer</a>
+        </li>
+        }
+    </ul>
+}
+

@@ -10,18 +10,10 @@ import views.html.*;
 
 @Security.Authenticated(Secured.class)
 public class Application extends Controller {
-
     public static Result index() {
         return ok(index.render(
-                "Vos champs sont pret a etre rempli",
-
-                Effet_indesirable.find.orderBy("id").findList(),
-                Substance.find.orderBy("id").findList(),
-                Medicament.find.order("id").findList(),
                 Utilisateur.find.orderBy("login").findList(),
-                Dispo_medical.find.orderBy("id").findList(),
                 User.find.byId(request().username())
         ));
     }
-
 }

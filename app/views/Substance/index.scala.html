@@ -1,0 +1,23 @@
+@(substances: List[Substance], user: User)
+
+@import helper._
+
+@main("Modifier une substance", user) {
+    <fieldset>
+        <h2>Nouvelle substance</h2>
+        <form method="post" action="@routes.Substances.add()">
+
+            <input name="label" placeholder="label">
+            <button type="submit">Ajouter une substance</button>
+        </form>
+    </fieldset>
+
+    <ul>
+        @for(substance <- substances) {
+        <li>@substance.getId() @substance.getLabel()
+            - <a href="@routes.Substances.edit(substance.getId())">Modifier</a>
+            - <a href="@routes.Substances.delete(substance.getId())">Supprimer</a>
+        </li>
+        }
+    </ul>
+}

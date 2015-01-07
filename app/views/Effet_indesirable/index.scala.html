@@ -1,0 +1,24 @@
+@(effet_indesirables: List[models.Effet_indesirable], user: User)
+
+@import helper._
+
+@main("Les effets indesirables", user) {
+    <fieldset>
+        <h2>Nouveau effet_indesirable</h2>
+        <form method="post" action="@routes.Effet_indesirables.add()">
+
+            <input name="label" placeholder="label">
+            <button type="submit">Ajouter un effet_indesirable</button>
+        </form>
+    </fieldset>
+
+    <ul>
+        @for(effet_indesirable <- effet_indesirables) {
+        <li>
+            @effet_indesirable.getId() @effet_indesirable.getLabel()
+            - <a href="@routes.Effet_indesirables.edit(effet_indesirable.getId())">Modifier</a>
+            - <a href="@routes.Effet_indesirables.delete(effet_indesirable.getId())">Supprimer</a>
+        </li>
+        }
+    </ul>
+}

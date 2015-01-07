@@ -8,28 +8,33 @@ GET         /                                         controllers.Application.in
 #GET         /login                    controllers.Application.login()
 #POST        /login                    controllers.Application.authenticate()
 
-
-POST        /Effet_indesirable                        controllers.Effet_indesirables.add()
-POST        /Substance                                controllers.Substances.add()
-POST        /Medicament                               controllers.Medicaments.add()
-POST        /Utilisateur                              controllers.Utilisateurs.add()
-POST        /Effet_indesirable                        controllers.Effet_indesirables.add()
-POST        /Substance                                controllers.Substances.add()
-POST        /Medicament/ajouter                       controllers.Medicaments.add()
-POST        /Utilisateur                              controllers.Utilisateurs.add()
-POST        /Dispo_medical                    controllers.Dispo_medicaux.add()
-GET         /Medicament/supprimer/:id                 controllers.Medicaments.delete(id: Long)
-GET         /Medicament/modifier/:id                  controllers.Medicaments.edit(id: Long)
-POST        /Medicament/enregistrer/:id               controllers.Medicaments.update(id: Long)
+GET         /Effet_indesirable                        controllers.Effet_indesirables.index()
+POST        /Effet_indesirable/ajouter                controllers.Effet_indesirables.add()
 GET         /Effet_indesirable/supprimer/:id          controllers.Effet_indesirables.delete(id: Long)
 GET         /Effet_indesirable/modifier/:id           controllers.Effet_indesirables.edit(id: Long)
 POST        /Effet_indesirable/enregistrer/:id        controllers.Effet_indesirables.update(id: Long)
+
+GET        /Substance                                controllers.Substances.index()
+POST        /Substance/ajouter                        controllers.Substances.add()
 GET         /Substance/supprimer/:id                  controllers.Substances.delete(id: Long)
 GET         /Substance/modifier/:id                   controllers.Substances.edit(id: Long)
 POST        /Substance/enregistrer/:id                controllers.Substances.update(id: Long)
+
+GET        /Medicament                               controllers.Medicaments.index()
+POST        /Medicament/ajouter                       controllers.Medicaments.add()
+GET         /Medicament/supprimer/:id                 controllers.Medicaments.delete(id: Long)
+GET         /Medicament/modifier/:id                  controllers.Medicaments.edit(id: Long)
+POST        /Medicament/enregistrer/:id               controllers.Medicaments.update(id: Long)
+
+GET         /Dispo_medical                            controllers.Dispo_medicaux.index()
+POST        /Dispo_medical/ajouter                    controllers.Dispo_medicaux.add()
 GET         /Dispo_medical/supprimer/:id              controllers.Dispo_medicaux.delete(id: Long)
 GET         /Dispo_medical/modifier/:id               controllers.Dispo_medicaux.edit(id: Long)
 POST        /Dispo_medical/enregistrer/:id            controllers.Dispo_medicaux.update(id: Long)
+
+POST        /Utilisateur                              controllers.Utilisateurs.add()
+POST        /Utilisateur                              controllers.Utilisateurs.add()
+
 
 # Authentication
 GET         /login                                    controllers.Authentication.login()
