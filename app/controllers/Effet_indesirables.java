@@ -5,6 +5,7 @@ import models.User;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
+import play.mvc.Results;
 import play.mvc.Security;
 
 /**
@@ -14,6 +15,10 @@ import play.mvc.Security;
 public class Effet_indesirables extends Controller {
 
     public static Result add() {
+        User user = User.find.byId(request().username());
+        if (!user.isAdmin) {
+            return Results.forbidden("Need to be admin");
+        }
         Form<Effet_indesirable> effet_indesirableForm = Form.form(Effet_indesirable.class).bindFromRequest();
         Effet_indesirable effet_indesirable = effet_indesirableForm.get();
 
@@ -25,16 +30,22 @@ public class Effet_indesirables extends Controller {
     }
 
     public static Result edit(Long id) {
+        User user = User.find.byId(request().username());
+        if (!user.isAdmin) {
+            return Results.forbidden("Need to be admin");
+        }
         Effet_indesirable effet_indesirable = Effet_indesirable.find.where().idEq(id).findUnique();
         Form<Effet_indesirable> editForm = Form.form(Effet_indesirable.class).fill(effet_indesirable);
-        User user = User.find.byId(request().username());
         return ok(views.html.Effet_indesirable.edit.render(effet_indesirable, editForm, user));
     }
 
     public static Result update(Long id) {
+        User user = User.find.byId(request().username());
+        if (!user.isAdmin) {
+            return Results.forbidden("Need to be admin");
+        }
         Form<Effet_indesirable> filledForm = Form.form(Effet_indesirable.class).bindFromRequest();
         if (filledForm.hasErrors()) {
-                User user = User.find.byId(request().username());
                 Effet_indesirable effet_indesirable = Effet_indesirable.find.where().idEq(id).findUnique();
                 return badRequest(views.html.Effet_indesirable.edit.render(effet_indesirable, filledForm, user));
         } else {
@@ -46,10 +57,14 @@ public class Effet_indesirables extends Controller {
     }
 
     public static Result delete(Long id) {
-               final Effet_indesirable effet_indesirable = Effet_indesirable.find.byId(id);
-                if (effet_indesirable != null) {
-                    effet_indesirable.delete();
-                    }
+        User user = User.find.byId(request().username());
+        if (!user.isAdmin) {
+            return Results.forbidden("Need to be admin");
+        }
+        final Effet_indesirable effet_indesirable = Effet_indesirable.find.byId(id);
+        if (effet_indesirable != null) {
+            effet_indesirable.delete();
+            }
         return redirect(controllers.routes.Application.index());
     }
 

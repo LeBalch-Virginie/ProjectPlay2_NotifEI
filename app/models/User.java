@@ -22,6 +22,9 @@ public class User extends Model {
     @Constraints.Required
     public String password;
 
+    @Constraints.Required
+    public Boolean isAdmin;
+
     public static Model.Finder<String,User> find =
             new Model.Finder(String.class, User.class);
 

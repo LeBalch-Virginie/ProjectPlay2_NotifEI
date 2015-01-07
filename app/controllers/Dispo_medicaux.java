@@ -6,6 +6,7 @@ import models.User;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
+import play.mvc.Results;
 import play.mvc.Security;
 
 /**
@@ -15,6 +16,10 @@ import play.mvc.Security;
 public class Dispo_medicaux extends Controller {
 
     public static Result add() {
+        User user = User.find.byId(request().username());
+        if (!user.isAdmin) {
+            return Results.forbidden("Need to be admin");
+        }
         Form<Dispo_medical> dispo_medicalForm = Form.form(Dispo_medical.class).bindFromRequest();
         Dispo_medical dispo_medical = dispo_medicalForm.get();
 
@@ -26,16 +31,22 @@ public class Dispo_medicaux extends Controller {
     }
 
     public static Result edit(Long id) {
+        User user = User.find.byId(request().username());
+        if (!user.isAdmin) {
+            return Results.forbidden("Need to be admin");
+        }
         Dispo_medical dispo_medical = Dispo_medical.find.where().idEq(id).findUnique();
         Form<Dispo_medical> editForm = Form.form(Dispo_medical.class).fill(dispo_medical);
-        User user = User.find.byId(request().username());
         return ok(views.html.Dispo_medical.edit.render(dispo_medical, editForm, user));
     }
 
     public static Result update(Long id) {
+        User user = User.find.byId(request().username());
+        if (!user.isAdmin) {
+            return Results.forbidden("Need to be admin");
+        }
         Form<Dispo_medical> filledForm = Form.form(Dispo_medical.class).bindFromRequest();
         if (filledForm.hasErrors()) {
-            User user = User.find.byId(request().username());
             Dispo_medical dispo_medical = Dispo_medical.find.where().idEq(id).findUnique();
             return badRequest(views.html.Dispo_medical.edit.render(dispo_medical, filledForm, user));
         } else {
@@ -47,6 +58,10 @@ public class Dispo_medicaux extends Controller {
     }
 
     public static Result delete(Long id) {
+        User user = User.find.byId(request().username());
+        if (!user.isAdmin) {
+            return Results.forbidden("Need to be admin");
+        }
         final Dispo_medical dispo_medical = Dispo_medical.find.byId(id);
         if (dispo_medical != null) {
             dispo_medical.delete();

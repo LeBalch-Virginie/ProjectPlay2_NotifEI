@@ -2,9 +2,12 @@ package controllers;
 
 import models.Medicament;
 import models.User;
+import org.omg.CosNaming.NamingContextPackage.NotFound;
 import play.data.Form;
 import play.mvc.Controller;
+import play.mvc.Http.Request;
 import play.mvc.Result;
+import play.mvc.Results;
 import play.mvc.Security;
 
 /**
@@ -13,6 +16,10 @@ import play.mvc.Security;
 @Security.Authenticated(Secured.class)
 public class Medicaments extends Controller {
     public static Result add() {
+        User user = User.find.byId(request().username());
+        if (!user.isAdmin) {
+            return Results.forbidden("Need to be admin");
+        }
         final Form<Medicament> medicamentForm = Form.form(Medicament.class).bindFromRequest();
         //final Medicament effet_indesirable = medicamentForm.get();
         final Medicament medicament = medicamentForm.get();
@@ -23,16 +30,22 @@ public class Medicaments extends Controller {
     }
 
     public static Result edit(Long id) {
+        User user = User.find.byId(request().username());
+        if (!user.isAdmin) {
+            return Results.forbidden("Need to be admin");
+        }
         Medicament medicament = Medicament.find.where().idEq(id).findUnique();
         Form<Medicament> editForm = Form.form(Medicament.class).fill(medicament);
-        User user = User.find.byId(request().username());
         return ok(views.html.Medicament.edit.render(medicament, editForm, user));
     }
 
     public static Result update(Long id) {
+        User user = User.find.byId(request().username());
+        if (!user.isAdmin) {
+            return Results.forbidden("Need to be admin");
+        }
         Form<Medicament> filledForm = Form.form(Medicament.class).bindFromRequest();
         if (filledForm.hasErrors()) {
-                User user = User.find.byId(request().username());
                 Medicament medicament = Medicament.find.where().idEq(id).findUnique();
                return badRequest(views.html.Medicament.edit.render(medicament, filledForm, user));
         } else {
@@ -44,6 +57,10 @@ public class Medicaments extends Controller {
     }
 
     public static Result delete(Long id) {
+        User user = User.find.byId(request().username());
+        if (!user.isAdmin) {
+            return Results.forbidden("Need to be admin");
+        }
         final Medicament medicament = Medicament.find.byId(id);
         if (medicament != null) {
             medicament.delete();
