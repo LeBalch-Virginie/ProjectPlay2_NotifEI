@@ -20,3 +20,13 @@ users:
         isAdmin:    false
 
 
+
+
+
+# Medicaments
+
+medicaments:
+
+    - !!models.Medicament
+        id:        60885246
+        nom:       MOVICOL, poudre pour solution buvable en sachet
