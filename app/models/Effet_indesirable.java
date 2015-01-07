@@ -10,19 +10,15 @@ import java.util.List;
 public class Effet_indesirable extends Model {
 
     @Id
-    private long id;
+    private Long id;
     private String label;
     public int pere;
     public int fils;
 
-    @ManyToMany
-    public List<Classe_pharmaco> Classe_pharmacos = new ArrayList<Classe_pharmaco>();
-
-    @ManyToMany
-    public List<Classe_chimique> Classe_chimiques = new ArrayList<Classe_chimique>();
 
 
-    public long getId() {
+
+    public Long getId() {
         return id;
     }
 
@@ -54,4 +50,10 @@ public class Effet_indesirable extends Model {
     public void setFils(int fils) {
         this.fils = fils;
     }
+
+    @ManyToMany
+    public List<Classe_pharmaco> Classe_pharmacos = new ArrayList<Classe_pharmaco>();
+
+    @ManyToMany
+    public List<Classe_chimique> Classe_chimiques = new ArrayList<Classe_chimique>();
 }

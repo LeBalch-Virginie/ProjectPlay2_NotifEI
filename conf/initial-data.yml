@@ -30,3 +30,43 @@ medicaments:
     - !!models.Medicament
         id:        60885246
         nom:       MOVICOL, poudre pour solution buvable en sachet
+
+    - !!models.Medicament
+        id:        63601822
+        nom:       DRAGEES VEGETALES REX, comprimé pelliculé
+
+    - !!models.Medicament
+        id:        60278221
+        nom:       SULFATE DE MAGNESIUM COOPER 0,15 g/ml (1,5 g/10 ml), solution injectable (I.V.) en ampoule
+
+    - !!models.Medicament
+        id:        65651044
+        nom:       DONEPEZIL ZYDUS 10 mg, comprimé pelliculé
+
+    - !!models.Medicament
+        id:        65073537
+        nom:       PARACETAMOL OFFILINK 1 g, comprimé
+
+    - !!models.Medicament
+        id:        68307319
+        nom:       SOLUTION INJECTABLE DE GLUCOSE A 50 % BAXTER, solution pour perfusion en poche
+
+    - !!models.Medicament
+        id:        64180995
+        nom:       DEXEF 500 mg, gélule
+
+# Effet_indesirables
+
+effet_indesirables:
+
+    - !!models.Effet_indesirable
+        id:        10000196
+        label:     Anomalies_urinaires
+
+    - !!models.Effet_indesirable
+        id:        10000125
+        label:     Reves_anormaux
+
+    - !!models.Effet_indesirable
+        id:        10001022
+        label:     Psychose_aigue
