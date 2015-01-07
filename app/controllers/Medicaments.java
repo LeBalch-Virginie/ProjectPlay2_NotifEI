@@ -16,6 +16,10 @@ import play.mvc.Security;
 @Security.Authenticated(Secured.class)
 public class Medicaments extends Controller {
     public static Result index() {
+        User user = User.find.byId(request().username());
+        if (!user.isAdmin) {
+            return Results.forbidden("Need to be admin");
+        }
         return ok(views.html.Medicament.index.render(
                 Medicament.find.orderBy("id").findList(),
                 User.find.byId(request().username())

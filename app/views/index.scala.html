@@ -3,15 +3,17 @@
 @main("NotifIE", user) {
     <h1>NotifIE</h1>
 
-    <fieldset>
-        <legend>Administration</legend>
-        <ul>
-            <li><a href="@routes.Effet_indesirables.index()">Les effets indésirables</a></li>
-            <li><a href="@routes.Substances.index()">Les substances</a></li>
-            <li><a href="@routes.Medicaments.index()">Les médicaments</a></li>
-            <li><a href="@routes.Dispo_medicaux.index()">Les dispositifs médicaux</a></li>
-        </ul>
-    </fieldset>
+    @if(user.isAdmin) {
+        <fieldset>
+            <legend>Administration</legend>
+            <ul>
+                <li><a href="@routes.Effet_indesirables.index()">Les effets indésirables</a></li>
+                <li><a href="@routes.Substances.index()">Les substances</a></li>
+                <li><a href="@routes.Medicaments.index()">Les médicaments</a></li>
+                <li><a href="@routes.Dispo_medicaux.index()">Les dispositifs médicaux</a></li>
+            </ul>
+        </fieldset>
+    }
 
     <!-- Formulaire de saisie : utilisateur -->
     <fieldset>
@@ -34,8 +36,4 @@
         <li>@utilisateur.getId() @utilisateur.getLogin() @utilisateur.getMdp() @utilisateur.getRole() </li>
     }
     </ul>
-
-
-
-
 }

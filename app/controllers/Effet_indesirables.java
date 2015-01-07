@@ -14,6 +14,10 @@ import play.mvc.Security;
 @Security.Authenticated(Secured.class)
 public class Effet_indesirables extends Controller {
     public static Result index() {
+        User user = User.find.byId(request().username());
+        if (!user.isAdmin) {
+            return Results.forbidden("Need to be admin");
+        }
         return ok(views.html.Effet_indesirable.index.render(
                 Effet_indesirable.find.orderBy("id").findList(),
                 User.find.byId(request().username())
