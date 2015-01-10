@@ -5,12 +5,14 @@
 
 create table classe_chimique (
   id                        bigint auto_increment not null,
+  code                      varchar(255),
   label                     varchar(255),
   constraint pk_classe_chimique primary key (id))
 ;
 
 create table classe_pharmaco (
   id                        bigint auto_increment not null,
+  code                      varchar(255),
   label                     varchar(255),
   constraint pk_classe_pharmaco primary key (id))
 ;
