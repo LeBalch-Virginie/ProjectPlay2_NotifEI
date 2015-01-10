@@ -17,8 +17,7 @@ public class Classe_chimique extends Model {
     @Id
     private Long id;
     private String label;
-    private int pere;
-    private int fils;
+
 
     public Long getId() {
         return id;
@@ -32,21 +31,6 @@ public class Classe_chimique extends Model {
         this.label = label;
     }
 
-    public int getPere() {
-        return pere;
-    }
-
-    public void setPere(int pere) {
-        this.pere = pere;
-    }
-
-    public int getFils() {
-        return fils;
-    }
-
-    public void setFils(int fils) {
-        this.fils = fils;
-    }
 
     @ManyToMany(mappedBy = "Classe_chimiques")
     public List<Substance> Substances = new ArrayList<Substance>();

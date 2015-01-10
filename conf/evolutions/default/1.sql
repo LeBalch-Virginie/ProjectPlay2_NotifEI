@@ -6,16 +6,12 @@
 create table classe_chimique (
   id                        bigint auto_increment not null,
   label                     varchar(255),
-  pere                      integer,
-  fils                      integer,
   constraint pk_classe_chimique primary key (id))
 ;
 
 create table classe_pharmaco (
   id                        bigint auto_increment not null,
   label                     varchar(255),
-  pere                      integer,
-  fils                      integer,
   constraint pk_classe_pharmaco primary key (id))
 ;
 
@@ -59,6 +55,16 @@ create table utilisateur (
   mdp                       varchar(255),
   role                      varchar(255),
   constraint pk_utilisateur primary key (id))
+;
+
+create table hierarchie_cl_ch (
+  pere                      integer,
+  fils                      integer)
+;
+
+create table hierarchie_cl_ph (
+  pere                      integer,
+  fils                      integer)
 ;
 
 
@@ -155,6 +161,10 @@ drop table substance;
 drop table user;
 
 drop table utilisateur;
+
+drop table hierarchie_cl_ch;
+
+drop table hierarchie_cl_ph;
 
 SET FOREIGN_KEY_CHECKS=1;
 
