@@ -35,4 +35,8 @@ public class Dispo_medical extends Model {
 
     public static Model.Finder<Long, Dispo_medical> find =
             new Model.Finder<Long, Dispo_medical>(Long.class, Dispo_medical.class);
+
+
+    @ManyToMany(mappedBy = "Dispo_medicaux")
+    public List<Effet_indesirable> Effet_indesirables = new ArrayList<Effet_indesirable>();
 }

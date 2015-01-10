@@ -74,6 +74,12 @@ create table effet_indesirable_classe_chimique (
   constraint pk_effet_indesirable_classe_chimique primary key (effet_indesirable_id, classe_chimique_id))
 ;
 
+create table effet_indesirable_dispo_medical (
+  effet_indesirable_id           bigint not null,
+  dispo_medical_id               bigint not null,
+  constraint pk_effet_indesirable_dispo_medical primary key (effet_indesirable_id, dispo_medical_id))
+;
+
 create table substance_medicament (
   substance_id                   bigint not null,
   medicament_id                  bigint not null,
@@ -101,6 +107,10 @@ alter table effet_indesirable_classe_pharmaco add constraint fk_effet_indesirabl
 alter table effet_indesirable_classe_chimique add constraint fk_effet_indesirable_classe_chimique_effet_indesirable_01 foreign key (effet_indesirable_id) references effet_indesirable (id) on delete restrict on update restrict;
 
 alter table effet_indesirable_classe_chimique add constraint fk_effet_indesirable_classe_chimique_classe_chimique_02 foreign key (classe_chimique_id) references classe_chimique (id) on delete restrict on update restrict;
+
+alter table effet_indesirable_dispo_medical add constraint fk_effet_indesirable_dispo_medical_effet_indesirable_01 foreign key (effet_indesirable_id) references effet_indesirable (id) on delete restrict on update restrict;
+
+alter table effet_indesirable_dispo_medical add constraint fk_effet_indesirable_dispo_medical_dispo_medical_02 foreign key (dispo_medical_id) references dispo_medical (id) on delete restrict on update restrict;
 
 alter table substance_medicament add constraint fk_substance_medicament_substance_01 foreign key (substance_id) references substance (id) on delete restrict on update restrict;
 
@@ -131,6 +141,8 @@ drop table substance_classe_pharmaco;
 drop table effet_indesirable_classe_pharmaco;
 
 drop table dispo_medical;
+
+drop table effet_indesirable_dispo_medical;
 
 drop table effet_indesirable;
 

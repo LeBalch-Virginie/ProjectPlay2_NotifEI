@@ -56,4 +56,9 @@ public class Effet_indesirable extends Model {
 
     @ManyToMany
     public List<Classe_chimique> Classe_chimiques = new ArrayList<Classe_chimique>();
+
+    @ManyToMany
+    public List<Dispo_medical> Dispo_medicaux = new ArrayList<Dispo_medical>();
+
+
 }
