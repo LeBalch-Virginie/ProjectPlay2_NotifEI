@@ -29,7 +29,9 @@ public class Global extends GlobalSettings {
                 Ebean.save(all.get("effet_indesirables"));
             }
 
-
+            if(Ebean.find(Dispo_medical.class).findRowCount() == 0) {
+                Ebean.save(all.get("dispositif"));
+            }
         }
     }
 }

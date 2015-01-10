@@ -58,7 +58,6 @@ medicaments:
 # Effet_indesirables
 
 effet_indesirables:
-
     - !!models.Effet_indesirable
         id:        10000196
         label:     Anomalies_urinaires
@@ -70,3 +69,18 @@ effet_indesirables:
     - !!models.Effet_indesirable
         id:        10001022
         label:     Psychose_aigue
+
+
+dispositif:
+    - !!models.Dispo_medical
+        id:        1
+        nom:     Radio
+    - !!models.Dispo_medical
+        id:        2
+        nom:     Scanner
+    - !!models.Dispo_medical
+        id:        3
+        nom:     IRM
+    - !!models.Dispo_medical
+        id:        4
+        nom:     Intraveineuse

@@ -50,10 +50,28 @@ public class Search extends Controller {
     public static Result fromMedicament() {
         DynamicForm requestData = Form.form().bindFromRequest();
         String medicamentName = requestData.get("medicament-search");
-        Medicament medicament = Medicament.find.where().eq("nom", medicamentName).findUnique();
+        /*
+        List<Medicament> medicaments = Medicament.find
+                .fetch("substances")
+                .fetch("substances.Classe_chimiques")
+                .fetch("substances.Classe_chimiques.Effet_indesirables")
+                .where()
+                    .eq("nom", medicamentName)
+                .findList();
+        */
+        List<Effet_indesirable> effets = Effet_indesirable.find
+                .fetch("Classe_chimiques")
+                .fetch("Classe_chimiques.Substances")
+                .fetch("Classe_chimiques.Substances.medicaments")
+                .where()
+                    .eq("Classe_chimiques.Substances.medicaments.nom", medicamentName)
+                .findList();
 
-
-        return ok(medicament.getId().toString());
+        String[] result = new String[effets.size()];
+        for (int i = 0; i < effets.size(); i++) {
+            result[i] = effets.get(i).getLabel();
+        }
+        return ok(Json.toJson(result));
     }
 
     public static Result fromDispositif() {
