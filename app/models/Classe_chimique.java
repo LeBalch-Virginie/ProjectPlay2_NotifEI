@@ -2,10 +2,7 @@ package models;
 
 import play.db.ebean.Model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,16 +10,9 @@ import java.util.List;
 @Entity
 public class Classe_chimique extends Model {
 
-
     @Id
-    private Long id;
     private String code;
     private String label;
-
-
-    public Long getId() {
-        return id;
-    }
 
     public String getCode() {return code;}
 
@@ -43,4 +33,11 @@ public class Classe_chimique extends Model {
     @ManyToMany(mappedBy = "Classe_chimiques")
     public List<Effet_indesirable> Effet_indesirables = new ArrayList<Effet_indesirable>();
 
+    @ManyToMany
+    @JoinTable(name="hierarchie_classe_chimique", joinColumns=@JoinColumn(name="pere_id"), inverseJoinColumns=@JoinColumn(name="fils_id"))
+    public List<Classe_chimique> peres = new ArrayList<Classe_chimique>();
+
+    @ManyToMany
+    @JoinTable(name="hierarchie_classe_chimique", joinColumns=@JoinColumn(name="fils_id"), inverseJoinColumns=@JoinColumn(name="pere_id"))
+    public List<Classe_chimique> fils = new ArrayList<Classe_chimique>();
 }

@@ -12,11 +12,6 @@ public class Effet_indesirable extends Model {
     @Id
     private Long id;
     private String label;
-    public int pere;
-    public int fils;
-
-
-
 
     public Long getId() {
         return id;
@@ -35,22 +30,6 @@ public class Effet_indesirable extends Model {
         this.label = label;
     }
 
-    public int getPere() {
-        return pere;
-    }
-
-    public void setPere(int pere) {
-        this.pere = pere;
-    }
-
-    public int getFils() {
-        return fils;
-    }
-
-    public void setFils(int fils) {
-        this.fils = fils;
-    }
-
     @ManyToMany
     public List<Classe_pharmaco> Classe_pharmacos = new ArrayList<Classe_pharmaco>();
 
@@ -60,5 +39,11 @@ public class Effet_indesirable extends Model {
     @ManyToMany
     public List<Dispo_medical> Dispo_medicaux = new ArrayList<Dispo_medical>();
 
+    @ManyToMany
+    @JoinTable(name="hierarchie_effet_indesirable", joinColumns=@JoinColumn(name="pere_id"), inverseJoinColumns=@JoinColumn(name="fils_id"))
+    public List<Effet_indesirable> peres = new ArrayList<Effet_indesirable>();
 
+    @ManyToMany
+    @JoinTable(name="hierarchie_effet_indesirable", joinColumns=@JoinColumn(name="fils_id"), inverseJoinColumns=@JoinColumn(name="pere_id"))
+    public List<Effet_indesirable> fils = new ArrayList<Effet_indesirable>();
 }

@@ -12,15 +12,16 @@ jQuery(function($) {
         }
     });
 
-    $("#dispositif-form").submit(function(e) {
+    $("#medicament-form").submit(function(e) {
         e.preventDefault();
+        $("#medicament-effets").html('<li><img src="/assets/images/wait.gif" height="42" width="42" alt="wait" /></li>');
         $.post(
-            "/recherche/dispositif",
-            { "dispositif-search" : $("#dispositif-search").val() },
+            "/recherche/medicament",
+            { "medicament-search" : $("#medicament-search").val() },
             function(data) {
-               $("#dispositif-effets").empty();
+               $("#medicament-effets").empty();
                 for (var i = 0; i < data.length; i++) {
-                    $("#dispositif-effets").append("<li>" + data[i] + "</li>");
+                    $("#medicament-effets").append("<li>" + data[i] + "</li>");
                 }
             },
             "json"
@@ -39,6 +40,23 @@ jQuery(function($) {
                 }
             );
         }
+    });
+
+    $("#dispositif-form").submit(function(e) {
+        e.preventDefault();
+        $("#dispositif-effets").html('<li><img src="/assets/images/wait.gif" height="42" width="42" alt="wait" /></li>');
+        $.post(
+            "/recherche/dispositif",
+            { "dispositif-search" : $("#dispositif-search").val() },
+            function(data) {
+                $("#dispositif-effets").empty();
+                for (var i = 0; i < data.length; i++) {
+                    $("#dispositif-effets").append("<li>" + data[i] + "</li>");
+                }
+            },
+            "json"
+        );
+        return false;
     });
 
     $("#cosmetique-search").keyup(function() {
