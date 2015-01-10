@@ -32,8 +32,6 @@ public class Effet_indesirables extends Controller {
         Form<Effet_indesirable> effet_indesirableForm = Form.form(Effet_indesirable.class).bindFromRequest();
         Effet_indesirable effet_indesirable = effet_indesirableForm.get();
 
-        System.out.println(effet_indesirableForm.data().get("label"));
-        System.out.println(effet_indesirable.getLabel());
         effet_indesirable.save();
 
         return redirect(controllers.routes.Application.index());

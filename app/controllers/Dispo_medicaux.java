@@ -33,11 +33,9 @@ public class Dispo_medicaux extends Controller {
         Form<Dispo_medical> dispo_medicalForm = Form.form(Dispo_medical.class).bindFromRequest();
         Dispo_medical dispo_medical = dispo_medicalForm.get();
 
-        System.out.println(dispo_medicalForm.data().get("nom"));
-        System.out.println(dispo_medical.getNom());
         dispo_medical.save();
 
-        return redirect(controllers.routes.Application.index());
+        return redirect(controllers.routes.Dispo_medicaux.index());
     }
 
     public static Result edit(Long id) {
@@ -63,7 +61,7 @@ public class Dispo_medicaux extends Controller {
             Dispo_medical dispo_medical = filledForm.get();
             dispo_medical.setId(id);
             dispo_medical.update();
-            return redirect(controllers.routes.Application.index());
+            return redirect(controllers.routes.Dispo_medicaux.index());
         }
     }
 
@@ -76,6 +74,6 @@ public class Dispo_medicaux extends Controller {
         if (dispo_medical != null) {
             dispo_medical.delete();
         }
-        return redirect(controllers.routes.Application.index());
+        return redirect(controllers.routes.Dispo_medicaux.index());
     }
 }

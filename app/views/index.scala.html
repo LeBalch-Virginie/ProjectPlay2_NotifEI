@@ -3,6 +3,10 @@
 @main("NotifIE", user) {
     <h1>NotifIE</h1>
 
+    <ul>
+        <li><a href="@routes.Search.index()">Consulter les effets indésirables</a></li>
+    </ul>
+
     @if(user.isAdmin) {
         <fieldset>
             <legend>Administration</legend>
