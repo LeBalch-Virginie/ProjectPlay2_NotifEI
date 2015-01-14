@@ -1,0 +1,25 @@
+@(produit_cosmetiques: List[Produit_cosmetique], user: User)
+
+@import helper._
+
+@main("Modifier un produit cosmetique", user) {
+    <fieldset>
+        <h2>Nouveau produit cosmetique</h2>
+        <form method="post" action="@routes.Produit_cosmetiques.add()">
+
+            <input name="nom" placeholder="nom">
+            <button type="submit">Ajouter un produit cosmetique</button>
+        </form>
+    </fieldset>
+
+    <ul>
+        @for(produit <- produit_cosmetiques) {
+        <li>
+            @produit.getId() @produit.getNom()
+            - <a href="@routes.Produit_cosmetiques.edit(produit.getId())">Modifier</a>
+            - <a href="@routes.Produit_cosmetiques.delete(produit.getId())">Supprimer</a>
+        </li>
+        }
+    </ul>
+}
+
