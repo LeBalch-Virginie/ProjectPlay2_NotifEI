@@ -1,6 +1,6 @@
 package controllers;
 
-import models.Medicament;
+
 import models.Produit_cosmetique;
 import models.User;
 import play.data.Form;

@@ -1,11 +1,11 @@
-@(medicament: Medicament, medicamentForm: Form[Medicament], user: User)
+@(produit_cosmetique: Produit_cosmetique, produit_cosmetiqueForm: Form[Produit_cosmetique], user: User)
 
 @import helper._
 
-@main("Modifier un médicament", user) {
-      <p>id: @medicament.getId</p>
-      @form(routes.Medicaments.update(medicament.getId)) {
-            @inputText(medicamentForm("nom"))
+@main("Modifier un produit cosmetique", user) {
+      <p>id: @produit_cosmetique.getId</p>
+      @form(routes.Produit_cosmetiques.update(produit_cosmetique.getId)) {
+            @inputText(produit_cosmetiqueForm("nom"))
             <input type="submit" value="Update">
         }
 }
