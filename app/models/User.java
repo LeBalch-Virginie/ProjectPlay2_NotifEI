@@ -16,14 +16,40 @@ public class User extends Model {
     @Formats.NonEmpty
     public String email;
 
-    @Constraints.Required
+    //@Constraints.Required
     public String name;
 
     @Constraints.Required
     public String password;
 
-    @Constraints.Required
+    //@Constraints.Required
     public Boolean isAdmin;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getTypeUser() {
+        return typeUser;
+    }
+
+    public void setTypeUser(String typeUser) {
+        this.typeUser = typeUser;
+    }
+
+    public Boolean getIsAdmin() {
+        return isAdmin;
+    }
+
+    public void setIsAdmin(Boolean isAdmin) {
+        this.isAdmin = isAdmin;
+    }
+
+    public String typeUser;
 
     public static Model.Finder<String,User> find =
             new Model.Finder(String.class, User.class);

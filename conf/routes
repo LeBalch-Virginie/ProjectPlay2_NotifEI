@@ -63,11 +63,11 @@ GET         /Excipient/supprimer/:id                    controllers.Excipients.d
 GET         /Excipient/modifier/:id                     controllers.Excipients.edit(id: Long)
 POST        /Excipient/enregistrer/:id                  controllers.Excipients.update(id: Long)
 
-GET         /Conservateur                             controllers.Conservateurs.index()
-POST        /Conservateur/ajouter                     controllers.Conservateurs.add()
-GET         /Conservateur/supprimer/:id               controllers.Conservateurs.delete(id: Long)
-GET         /Conservateur/modifier/:id                controllers.Conservateurs.edit(id: Long)
-POST        /Conservateur/enregistrer/:id             controllers.Conservateurs.update(id: Long)
+GET         /Conservateur                               controllers.Conservateurs.index()
+POST        /Conservateur/ajouter                       controllers.Conservateurs.add()
+GET         /Conservateur/supprimer/:id                 controllers.Conservateurs.delete(id: Long)
+GET         /Conservateur/modifier/:id                  controllers.Conservateurs.edit(id: Long)
+POST        /Conservateur/enregistrer/:id               controllers.Conservateurs.update(id: Long)
 
 POST        /Utilisateur                                controllers.Utilisateurs.add()
 POST        /Utilisateur                                controllers.Utilisateurs.add()
@@ -77,6 +77,9 @@ POST        /Utilisateur                                controllers.Utilisateurs
 GET         /login                                      controllers.Authentication.login()
 POST        /login                                      controllers.Authentication.authenticate()
 GET         /logout                                     controllers.Authentication.logout()
+
+GET         /register                                   controllers.Authentication.register()
+POST        /register                                   controllers.Authentication.add()
 
 # Map static resources from the /public folder to the /assets URL path
 GET         /assets/*file                               controllers.Assets.at(path="/public", file)

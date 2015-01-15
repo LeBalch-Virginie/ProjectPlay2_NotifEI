@@ -19,4 +19,27 @@
     <p><input type="password" name="password" placeholder="Password"></p>
     <p><button class="btn" type="submit">Login</button></p>
   }
+
+  <fieldset>
+    <h2>Nouveau user</h2>
+    <form method="post" action="@routes.Authentication.register">
+
+      <p><input type="email" name="email" placeholder="Email"
+      value="@form("email").value"></p>
+      <input name="name" placeholder="name">
+      <p><input type="password" name="password" placeholder="Password"></p>
+      <select name="typeUser" size="1" >
+        <option value="patient"> patient </option>
+        <option value="medecin">medecin </option>
+        <option value="patient"> association de patient </option>
+        <option value="medecin">medecin hospitalier </option>
+        <option value="patient"> medecin de ville </option>
+        <option value="medecin">CRPV </option>
+        <option value="medecin">CNPV </option>
+        <option value="patient"> laboratoire pharmaceutique </option>
+        <option value="medecin">laboratoire cosmetiques </option>
+      </select>
+      <button type="submit">Ajouter un utilisateur</button>
+    </form>
+  </fieldset>
 }

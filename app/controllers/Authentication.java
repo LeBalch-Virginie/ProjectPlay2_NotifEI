@@ -23,11 +23,26 @@ public class Authentication extends Controller {
         }
     }
 
+    public static Result register() {
+        return redirect(controllers.routes.Application.index());
+    }
+
+    public static Result add() {
+        Form<User> userForm = Form.form(User.class).bindFromRequest();
+        User user = userForm.get();
+        
+        user.save();
+
+        return redirect(controllers.routes.Application.index());
+    }
+
+
     public static Result login() {
         return ok(
                 login.render(Form.form(AuthenticatedUser.class))
         );
     }
+
 
     //On récupère les informations de login (quand le user se "signe")
     public static Result authenticate() {

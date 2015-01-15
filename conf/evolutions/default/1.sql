@@ -74,6 +74,7 @@ create table user (
   name                      varchar(255),
   password                  varchar(255),
   is_admin                  tinyint(1) default 0,
+  type_user                 varchar(255),
   constraint pk_user primary key (email))
 ;
 
