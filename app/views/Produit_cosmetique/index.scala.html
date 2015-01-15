@@ -3,6 +3,7 @@
 @import helper._
 
 @main("Modifier un produit cosmetique", user) {
+    <a href="@routes.Application.index()">Retour</a>
     <fieldset>
         <h2>Nouveau produit cosmetique</h2>
         <form method="post" action="@routes.Produit_cosmetiques.add()">

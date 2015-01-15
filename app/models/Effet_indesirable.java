@@ -11,6 +11,7 @@ public class Effet_indesirable extends Model {
 
     @Id
     private Long id;
+
     private String label;
 
     public Long getId() {

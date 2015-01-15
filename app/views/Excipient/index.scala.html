@@ -3,6 +3,8 @@
 @import helper._
 
 @main("Modifier un excipient", user) {
+
+    <a href="@routes.Application.index()">Retour</a>
     <fieldset>
         <h2>Nouveau excipient</h2>
         <form method="post" action="@routes.Excipients.add()">

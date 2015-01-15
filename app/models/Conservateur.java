@@ -16,6 +16,7 @@ public class Conservateur extends Model {
 
     @Id
     private Long id;
+
     private String nom;
 
     public Long getId() {

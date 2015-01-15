@@ -3,6 +3,7 @@
 @import helper._
 
 @main("Modifier un conservateur", user) {
+    <a href="@routes.Application.index()">Retour</a>
     <fieldset>
         <h2>Nouveau conservateur</h2>
         <form method="post" action="@routes.Conservateurs.add()">
@@ -11,6 +12,7 @@
             <button type="submit">Ajouter un conservateur</button>
         </form>
     </fieldset>
+
 
     <ul>
         @for(conservateur <- conservateurs) {

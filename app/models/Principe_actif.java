@@ -16,6 +16,7 @@ public class Principe_actif extends Model {
 
     @Id
     private Long id;
+
     private String nom;
 
     public Long getId() {

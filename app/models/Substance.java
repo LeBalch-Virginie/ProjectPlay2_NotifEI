@@ -14,6 +14,8 @@ public class Substance extends Model {
 
     @Id
     private Long id;
+
+
     private String label;
 
     public Long getId() {

@@ -3,6 +3,8 @@
 @import helper._
 
 @main("Modifier un médicament", user) {
+
+    <a href="@routes.Application.index()">Retour</a>
     <fieldset>
         <h2>Nouveau medicament</h2>
         <form method="post" action="@routes.Medicaments.add()">
