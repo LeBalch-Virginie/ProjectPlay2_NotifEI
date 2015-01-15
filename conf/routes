@@ -51,6 +51,12 @@ GET         /Parabene/supprimer/:id                     controllers.Parabenes.de
 GET         /Parabene/modifier/:id                      controllers.Parabenes.edit(id: Long)
 POST        /Parabene/enregistrer/:id                   controllers.Parabenes.update(id: Long)
 
+GET         /Principe_actif                             controllers.Principe_actifs.index()
+POST        /Principe_actif/ajouter                     controllers.Principe_actifs.add()
+GET         /Principe_actif/supprimer/:id               controllers.Principe_actifs.delete(id: Long)
+GET         /Principe_actif/modifier/:id                controllers.Principe_actifs.edit(id: Long)
+POST        /Principe_actif/enregistrer/:id             controllers.Principe_actifs.update(id: Long)
+
 POST        /Utilisateur                                controllers.Utilisateurs.add()
 POST        /Utilisateur                                controllers.Utilisateurs.add()
 

@@ -1,0 +1,23 @@
+@(principe_actif: Principe_actif, principe_actifForm: Form[Principe_actif], user: User)
+
+@import helper._
+
+@main("Modifier un principe actif", user) {
+      <p>id: @principe_actif.getId</p>
+      @form(routes.Principe_actifs.update(principe_actif.getId)) {
+            @inputText(principe_actifForm("nom"))
+            <input type="submit" value="Update">
+        }
+}
+
+
+
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+
+</body>
+</html>

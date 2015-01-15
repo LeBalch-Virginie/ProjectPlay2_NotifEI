@@ -1,0 +1,25 @@
+@(principe_actifs: List[Principe_actif], user: User)
+
+@import helper._
+
+@main("Modifier un principe actif", user) {
+    <fieldset>
+        <h2>Nouveau principe actif</h2>
+        <form method="post" action="@routes.Principe_actifs.add()">
+
+            <input name="nom" placeholder="nom">
+            <button type="submit">Ajouter un principe_actif</button>
+        </form>
+    </fieldset>
+
+    <ul>
+        @for(principe_actif <- principe_actifs) {
+        <li>
+            @principe_actif.getId() @principe_actif.getNom()
+            - <a href="@routes.Principe_actifs.edit(principe_actif.getId())">Modifier</a>
+            - <a href="@routes.Principe_actifs.delete(principe_actif.getId())">Supprimer</a>
+        </li>
+        }
+    </ul>
+}
+
