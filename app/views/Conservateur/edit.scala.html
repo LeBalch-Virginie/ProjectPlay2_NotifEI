@@ -1,0 +1,23 @@
+@(conservateur: Conservateur, conservateurForm: Form[Conservateur], user: User)
+
+@import helper._
+
+@main("Modifier un conservateur", user) {
+      <p>id: @conservateur.getId</p>
+      @form(routes.Conservateurs.update(conservateur.getId)) {
+            @inputText(conservateurForm("nom"))
+            <input type="submit" value="Update">
+        }
+}
+
+
+
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+
+</body>
+</html>

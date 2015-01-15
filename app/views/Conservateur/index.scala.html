@@ -1,0 +1,25 @@
+@(conservateurs: List[Conservateur], user: User)
+
+@import helper._
+
+@main("Modifier un conservateur", user) {
+    <fieldset>
+        <h2>Nouveau conservateur</h2>
+        <form method="post" action="@routes.Conservateurs.add()">
+
+            <input name="nom" placeholder="nom">
+            <button type="submit">Ajouter un conservateur</button>
+        </form>
+    </fieldset>
+
+    <ul>
+        @for(conservateur <- conservateurs) {
+        <li>
+            @conservateur.getId() @conservateur.getNom()
+            - <a href="@routes.Conservateurs.edit(conservateur.getId())">Modifier</a>
+            - <a href="@routes.Conservateurs.delete(conservateur.getId())">Supprimer</a>
+        </li>
+        }
+    </ul>
+}
+
