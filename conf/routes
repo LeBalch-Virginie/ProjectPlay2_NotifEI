@@ -39,11 +39,17 @@ GET         /Dispo_medical/supprimer/:id                controllers.Dispo_medica
 GET         /Dispo_medical/modifier/:id                 controllers.Dispo_medicaux.edit(id: Long)
 POST        /Dispo_medical/enregistrer/:id              controllers.Dispo_medicaux.update(id: Long)
 
-GET         /Produit_cosmetique                            controllers.Produit_cosmetiques.index()
-POST        /Produit_cosmetique/ajouter                    controllers.Produit_cosmetiques.add()
-GET         /Produit_cosmetique/supprimer/:id              controllers.Produit_cosmetiques.delete(id: Long)
-GET         /Produit_cosmetique/modifier/:id               controllers.Produit_cosmetiques.edit(id: Long)
-POST        /Produit_cosmetique/enregistrer/:id            controllers.Produit_cosmetiques.update(id: Long)
+GET         /Produit_cosmetique                         controllers.Produit_cosmetiques.index()
+POST        /Produit_cosmetique/ajouter                 controllers.Produit_cosmetiques.add()
+GET         /Produit_cosmetique/supprimer/:id           controllers.Produit_cosmetiques.delete(id: Long)
+GET         /Produit_cosmetique/modifier/:id            controllers.Produit_cosmetiques.edit(id: Long)
+POST        /Produit_cosmetique/enregistrer/:id         controllers.Produit_cosmetiques.update(id: Long)
+
+GET         /Parabene                                   controllers.Parabenes.index()
+POST        /Parabene/ajouter                           controllers.Parabenes.add()
+GET         /Parabene/supprimer/:id                     controllers.Parabenes.delete(id: Long)
+GET         /Parabene/modifier/:id                      controllers.Parabenes.edit(id: Long)
+POST        /Parabene/enregistrer/:id                   controllers.Parabenes.update(id: Long)
 
 POST        /Utilisateur                                controllers.Utilisateurs.add()
 POST        /Utilisateur                                controllers.Utilisateurs.add()

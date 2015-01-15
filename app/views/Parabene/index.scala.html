@@ -1,0 +1,25 @@
+@(parabenes: List[Parabene], user: User)
+
+@import helper._
+
+@main("Modifier un parabene", user) {
+    <fieldset>
+        <h2>Nouveau parabene</h2>
+        <form method="post" action="@routes.Parabenes.add()">
+
+            <input name="nom" placeholder="nom">
+            <button type="submit">Ajouter un parabene</button>
+        </form>
+    </fieldset>
+
+    <ul>
+        @for(parabene <- parabenes) {
+        <li>
+            @parabene.getId() @parabene.getNom()
+            - <a href="@routes.Parabenes.edit(parabene.getId())">Modifier</a>
+            - <a href="@routes.Parabenes.delete(parabene.getId())">Supprimer</a>
+        </li>
+        }
+    </ul>
+}
+

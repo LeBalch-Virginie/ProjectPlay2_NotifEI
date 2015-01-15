@@ -1,0 +1,23 @@
+@(parabene: Parabene, parabeneForm: Form[Parabene], user: User)
+
+@import helper._
+
+@main("Modifier un parabene", user) {
+      <p>id: @parabene.getId</p>
+      @form(routes.Parabenes.update(parabene.getId)) {
+            @inputText(parabeneForm("nom"))
+            <input type="submit" value="Update">
+        }
+}
+
+
+
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+
+</body>
+</html>
