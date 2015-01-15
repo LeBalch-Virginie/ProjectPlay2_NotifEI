@@ -1,0 +1,23 @@
+@(excipient: Excipient, excipientForm: Form[Excipient], user: User)
+
+@import helper._
+
+@main("Modifier un excipient", user) {
+      <p>id: @excipient.getId</p>
+      @form(routes.Excipients.update(excipient.getId)) {
+            @inputText(excipientForm("nom"))
+            <input type="submit" value="Update">
+        }
+}
+
+
+
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+
+</body>
+</html>

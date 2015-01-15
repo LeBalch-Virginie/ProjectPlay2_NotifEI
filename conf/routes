@@ -57,6 +57,12 @@ GET         /Principe_actif/supprimer/:id               controllers.Principe_act
 GET         /Principe_actif/modifier/:id                controllers.Principe_actifs.edit(id: Long)
 POST        /Principe_actif/enregistrer/:id             controllers.Principe_actifs.update(id: Long)
 
+GET         /Excipient                             controllers.Excipients.index()
+POST        /Excipient/ajouter                     controllers.Excipients.add()
+GET         /Excipient/supprimer/:id               controllers.Excipients.delete(id: Long)
+GET         /Excipient/modifier/:id                controllers.Excipients.edit(id: Long)
+POST        /Excipient/enregistrer/:id             controllers.Excipients.update(id: Long)
+
 POST        /Utilisateur                                controllers.Utilisateurs.add()
 POST        /Utilisateur                                controllers.Utilisateurs.add()
 
