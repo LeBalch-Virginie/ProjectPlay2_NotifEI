@@ -71,9 +71,6 @@ GET         /Conservateur/supprimer/:id                 controllers.Conservateur
 GET         /Conservateur/modifier/:id                  controllers.Conservateurs.edit(id: Long)
 POST        /Conservateur/enregistrer/:id               controllers.Conservateurs.update(id: Long)
 
-POST        /Utilisateur                                controllers.Utilisateurs.add()
-POST        /Utilisateur                                controllers.Utilisateurs.add()
-
 
 # Authentication
 GET         /login                                      controllers.Authentication.login()

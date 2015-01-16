@@ -79,14 +79,6 @@ create table user (
   constraint pk_user primary key (email))
 ;
 
-create table utilisateur (
-  id                        bigint auto_increment not null,
-  login                     varchar(255),
-  mdp                       varchar(255),
-  role                      varchar(255),
-  constraint pk_utilisateur primary key (id))
-;
-
 
 create table hierarchie_classe_chimique (
   pere_id                        varchar(255) not null,
@@ -273,8 +265,6 @@ drop table produit_cosmetique;
 drop table substance;
 
 drop table user;
-
-drop table utilisateur;
 
 SET FOREIGN_KEY_CHECKS=1;
 
