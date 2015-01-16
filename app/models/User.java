@@ -25,6 +25,10 @@ public class User extends Model {
     //@Constraints.Required
     public Boolean isAdmin;
 
+    public String typeUser;
+
+    public String region;
+
     public String getName() {
         return name;
     }
@@ -49,7 +53,7 @@ public class User extends Model {
         this.isAdmin = isAdmin;
     }
 
-    public String typeUser;
+
 
     public static Model.Finder<String,User> find =
             new Model.Finder(String.class, User.class);
