@@ -22,4 +22,11 @@ public class Application extends Controller {
         ));
     }
 
+    public static Result notifierEi() {
+        return ok(notifierEi.render(
+                Utilisateur.find.orderBy("login").findList(),
+                User.find.byId(request().username())
+        ));
+    }
+
 }

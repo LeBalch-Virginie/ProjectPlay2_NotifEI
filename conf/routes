@@ -5,6 +5,7 @@
 # Home page
 GET         /                                           controllers.Application.index()
 GET         /administration                             controllers.Application.administration()
+GET         /notifier                                   controllers.Application.notifierEi()
 
 #GET         /login                    controllers.Application.login()
 #POST        /login                    controllers.Application.authenticate()
