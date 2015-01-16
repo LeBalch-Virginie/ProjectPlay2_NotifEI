@@ -1,0 +1,23 @@
+@(utilisateurs : List[models.Utilisateur], user: User)
+
+@main("Administration", user) {
+    <h1>Administration</h1>
+
+    @if(user.isAdmin) {
+        <fieldset>
+            <legend>Administration</legend>
+            <ul>
+                <li><a href="@routes.Effet_indesirables.index()">Les effets indésirables</a></li>
+                <li><a href="@routes.Substances.index()">Les substances</a></li>
+                <li><a href="@routes.Medicaments.index()">Les médicaments</a></li>
+                <li><a href="@routes.Dispo_medicaux.index()">Les dispositifs médicaux</a></li>
+                <li><a href="@routes.Produit_cosmetiques.index()">Les produits cosmetiques</a></li>
+                <li><a href="@routes.Parabenes.index()">Les parabenes</a></li>
+                <li><a href="@routes.Principe_actifs.index()">Les principes actifs</a></li>
+                <li><a href="@routes.Excipients.index()">Les excipients</a></li>
+                <li><a href="@routes.Conservateurs.index()">Les conservateurs</a></li>
+            </ul>
+        </fieldset>
+    }
+
+}

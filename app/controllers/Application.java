@@ -16,4 +16,12 @@ public class Application extends Controller {
                 User.find.byId(request().username())
         ));
     }
+
+    public static Result administration() {
+        return ok(administration.render(
+                Utilisateur.find.orderBy("login").findList(),
+                User.find.byId(request().username())
+        ));
+    }
+
 }
