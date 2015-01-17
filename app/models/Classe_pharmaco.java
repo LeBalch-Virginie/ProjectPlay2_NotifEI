@@ -26,10 +26,10 @@ public class Classe_pharmaco extends Model {
     }
 
 
-    @ManyToMany(mappedBy = "Classe_pharmacos")
+    @ManyToMany(mappedBy = "Classe_pharmacos", cascade= CascadeType.ALL)
     public List<Substance> Substances = new ArrayList<Substance>();
 
-    @ManyToMany(mappedBy = "Classe_pharmacos")
+    @ManyToMany(mappedBy = "Classe_pharmacos", cascade= CascadeType.ALL)
     public List<Effet_indesirable> Effet_indesirables = new ArrayList<Effet_indesirable>();
 
     @ManyToMany

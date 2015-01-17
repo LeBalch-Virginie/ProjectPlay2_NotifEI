@@ -37,7 +37,7 @@ public class Excipient extends Model {
     public List<Produit_cosmetique> produit_cos = new ArrayList<Produit_cosmetique>();
 
 
-    public static Finder<Long, Excipient> find =
+    public static Model.Finder<Long, Excipient> find =
             new Finder<Long, Excipient>(Long.class, Excipient.class);
 
 

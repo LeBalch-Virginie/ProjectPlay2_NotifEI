@@ -2,6 +2,7 @@ package models;
 
 import play.db.ebean.Model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
@@ -32,7 +33,7 @@ public class Medicament extends Model{
         this.nom = nom;
     }
 
-    @ManyToMany(mappedBy = "medicaments")
+    @ManyToMany(mappedBy = "medicaments", cascade= CascadeType.ALL)
     public List<Substance> substances = new ArrayList<Substance>();
 
 

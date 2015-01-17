@@ -2,6 +2,7 @@ package models;
 
 import play.db.ebean.Model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
@@ -38,6 +39,6 @@ public class Dispo_medical extends Model {
             new Model.Finder<Long, Dispo_medical>(Long.class, Dispo_medical.class);
 
 
-    @ManyToMany(mappedBy = "Dispo_medicaux")
+    @ManyToMany(mappedBy = "Dispo_medicaux", cascade= CascadeType.ALL)
     public List<Effet_indesirable> Effet_indesirables = new ArrayList<Effet_indesirable>();
 }

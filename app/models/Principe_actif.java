@@ -37,7 +37,7 @@ public class Principe_actif extends Model {
     public List<Produit_cosmetique> produit_cos = new ArrayList<Produit_cosmetique>();
 
 
-    public static Finder<Long, Principe_actif> find =
+    public static Model.Finder<Long, Principe_actif> find =
             new Finder<Long, Principe_actif>(Long.class, Principe_actif.class);
 
 

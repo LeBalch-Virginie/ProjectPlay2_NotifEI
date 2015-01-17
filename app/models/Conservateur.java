@@ -37,7 +37,7 @@ public class Conservateur extends Model {
     public List<Produit_cosmetique> produit_cos = new ArrayList<Produit_cosmetique>();
 
 
-    public static Finder<Long, Conservateur> find =
+    public static Model.Finder<Long, Conservateur> find =
             new Finder<Long, Conservateur>(Long.class, Conservateur.class);
 
 

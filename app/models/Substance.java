@@ -41,7 +41,7 @@ public class Substance extends Model {
     @ManyToMany
     public List<Classe_chimique> Classe_chimiques = new ArrayList<Classe_chimique>();
 
-    public static Finder<Long, Substance> find =
+    public static Model.Finder<Long, Substance> find =
             new Finder<Long, Substance>(Long.class, Substance.class);
 
 }

@@ -37,7 +37,7 @@ public class Parabene extends Model {
     public List<Produit_cosmetique> produit_cos = new ArrayList<Produit_cosmetique>();
 
 
-    public static Finder<Long, Parabene> find =
+    public static Model.Finder<Long, Parabene> find =
             new Finder<Long, Parabene>(Long.class, Parabene.class);
 
 
