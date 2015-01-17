@@ -6,18 +6,9 @@
       <p>id: @produit_cosmetique.getId</p>
       @form(routes.Produit_cosmetiques.update(produit_cosmetique.getId)) {
             @inputText(produit_cosmetiqueForm("nom"))
+            @select(produit_cosmetiqueForm("parabenes.id[]"), models.Parabene.find.all.map(p => (p.getId.toString, p.getNom)), 'multiple -> None)
+
             <input type="submit" value="Update">
         }
 }
 
-
-
-<html>
-<head lang="en">
-  <meta charset="UTF-8">
-  <title></title>
-</head>
-<body>
-
-</body>
-</html>

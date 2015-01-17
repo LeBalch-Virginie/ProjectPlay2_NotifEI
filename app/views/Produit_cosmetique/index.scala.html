@@ -7,8 +7,32 @@
     <fieldset>
         <h2>Nouveau produit cosmetique</h2>
         <form method="post" action="@routes.Produit_cosmetiques.add()">
-
             <input name="nom" placeholder="nom">
+            <br/>
+            <select name="principe_ac.id[]" multiple="multiple">
+                @for(p <- models.Principe_actif.find.all) {
+                    <option value="@p.getId">@p.getNom</option>
+                }
+            </select>
+            <br/>
+            <select name="parabenes.id[]" multiple="multiple">
+                @for(p <- models.Parabene.find.all) {
+                    <option value="@p.getId">@p.getNom</option>
+                }
+            </select>
+            <br/>
+            <select name="excipients.id[]" multiple="multiple">
+                @for(e <- models.Excipient.find.all) {
+                    <option value="@e.getId">@e.getNom</option>
+                }
+            </select>
+            <br/>
+            <select name="conservateurs.id[]" multiple="multiple">
+                @for(c <- models.Conservateur.find.all) {
+                    <option value="@c.getId">@c.getNom</option>
+                }
+            </select>
+            <br/>
             <button type="submit">Ajouter un produit cosmetique</button>
         </form>
     </fieldset>

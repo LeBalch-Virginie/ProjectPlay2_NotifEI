@@ -1,13 +1,15 @@
 package controllers;
 
 
-import models.Produit_cosmetique;
-import models.User;
+import models.*;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.Results;
 import play.mvc.Security;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by virginie on 18/11/2014.
@@ -25,17 +27,40 @@ public class Produit_cosmetiques extends Controller {
         ));
     }
 
-
     public static Result add() {
+
+
         User user = User.find.byId(request().username());
         if (!user.isAdmin) {
             return Results.forbidden("Need to be admin");
         }
         final Form<Produit_cosmetique> produit_cosmetiqueForm = Form.form(Produit_cosmetique.class).bindFromRequest();
         final Produit_cosmetique produit_cosmetique = produit_cosmetiqueForm.get();
-
+        Map<String, String[]> urlFormEncoded = play.mvc.Controller.request().body().asFormUrlEncoded();
+        if (urlFormEncoded != null) {
+            for (String key : urlFormEncoded.keySet()) {
+                String[] value = urlFormEncoded.get(key);
+                if (key.equals("principe_ac.id[]")) {
+                    for (int i = 0; i < value.length; i++) {
+                        produit_cosmetique.principe_ac.add(Principe_actif.find.byId(Long.valueOf(value[i])));
+                    }
+                } else if (key.equals("parabenes.id[]")) {
+                    for (int i = 0; i < value.length; i++) {
+                        produit_cosmetique.parabenes.add(Parabene.find.byId(Long.valueOf(value[i])));
+                    }
+                } else if (key.equals("excipients.id[]")) {
+                    for (int i = 0; i < value.length; i++) {
+                        produit_cosmetique.excipients.add(Excipient.find.byId(Long.valueOf(value[i])));
+                    }
+                } else if (key.equals("conservateurs.id[]")) {
+                    for (int i = 0; i < value.length; i++) {
+                        produit_cosmetique.conservateurs.add(Conservateur.find.byId(Long.valueOf(value[i])));
+                    }
+                }
+            }
+        }
         produit_cosmetique.save();
-        return redirect(controllers.routes.Application.index());
+        return redirect(controllers.routes.Produit_cosmetiques.index());
     }
 
     public static Result edit(Long id) {
@@ -61,7 +86,7 @@ public class Produit_cosmetiques extends Controller {
             Produit_cosmetique produit_cosmetique = filledForm.get();
             produit_cosmetique.setId(id);
             produit_cosmetique.update();
-                return redirect(controllers.routes.Application.index());
+                return redirect(controllers.routes.Produit_cosmetiques.index());
         }
     }
 
@@ -74,7 +99,6 @@ public class Produit_cosmetiques extends Controller {
         if (produit_cosmetique != null) {
             produit_cosmetique.delete();
         }
-        return redirect(controllers.routes.Application.index());
+        return redirect(controllers.routes.Produit_cosmetiques.index());
     }
-
 }

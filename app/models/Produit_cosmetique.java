@@ -2,6 +2,7 @@ package models;
 
 import play.db.ebean.Model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
@@ -33,16 +34,16 @@ public class Produit_cosmetique extends Model {
         this.nom = nom;
     }
 
-    @ManyToMany(mappedBy = "produit_cos")
+    @ManyToMany(mappedBy = "produit_cos", cascade= CascadeType.ALL)
     public List<Principe_actif> principe_ac = new ArrayList<Principe_actif>();
 
-    @ManyToMany(mappedBy = "produit_cos")
+    @ManyToMany(mappedBy = "produit_cos", cascade= CascadeType.ALL)
     public List<Parabene> parabenes = new ArrayList<Parabene>();
 
-    @ManyToMany(mappedBy = "produit_cos")
+    @ManyToMany(mappedBy = "produit_cos", cascade= CascadeType.ALL)
     public List<Excipient> excipients = new ArrayList<Excipient>();
 
-    @ManyToMany(mappedBy = "produit_cos")
+    @ManyToMany(mappedBy = "produit_cos", cascade= CascadeType.ALL)
     public List<Conservateur> conservateurs = new ArrayList<Conservateur>();
 
     public static Finder<Long, Produit_cosmetique> find =
