@@ -4,6 +4,8 @@
 
 # Home page
 GET         /                                           controllers.Application.index()
+GET         /administration                             controllers.Application.administration()
+GET         /notifier                                   controllers.Application.notifierEi()
 
 #GET         /login                    controllers.Application.login()
 #POST        /login                    controllers.Application.authenticate()
@@ -68,9 +70,6 @@ POST        /Conservateur/ajouter                       controllers.Conservateur
 GET         /Conservateur/supprimer/:id                 controllers.Conservateurs.delete(id: Long)
 GET         /Conservateur/modifier/:id                  controllers.Conservateurs.edit(id: Long)
 POST        /Conservateur/enregistrer/:id               controllers.Conservateurs.update(id: Long)
-
-POST        /Utilisateur                                controllers.Utilisateurs.add()
-POST        /Utilisateur                                controllers.Utilisateurs.add()
 
 
 # Authentication

@@ -8,7 +8,7 @@
             @inputText(produit_cosmetiqueForm("nom"))
             @select(produit_cosmetiqueForm("parabenes.id[]"), models.Parabene.find.all.map(p => (p.getId.toString, p.getNom)), 'multiple -> None)
 
-            <input type="submit" value="Update">
+            <button class="btn" type="submit" value="Update">Modifier</button>
         }
 }
 

@@ -17,11 +17,16 @@
         <div class="navbar navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container">
-                    <a class="brand">@title</a>
+                    <a class="brand" href="@routes.Application.index()">Accueil <img src=@routes.Assets.at("images/accueil.jpg")></a>
                     @if(user != null) {
                         <ul class="nav">
+
+                            <li><a class="brand" href="@routes.Application.administration()">Administration</a></li>
+                            <li><a class="brand" href="@routes.Application.notifierEi()">Notifier un efffet indésirables</a></li>
+                            <li><a class="brand" href="@routes.Search.index()">Consulter les effets indésirables</a></li>
                             <li><a>@user.name <span>(@user.email)</span></a></li>
                             <li><a href="@routes.Authentication.logout()">Logout</a></li>
+
                         </ul>
                     }
                 </div>
