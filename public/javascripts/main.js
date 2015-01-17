@@ -71,4 +71,21 @@ jQuery(function($) {
             );
         }
     });
+
+    $("#cosmetique-form").submit(function(e) {
+        e.preventDefault();
+        $("#cosmetique-effets").html('<li><img src="/assets/images/wait.gif" height="42" width="42" alt="wait" /></li>');
+        $.post(
+            "/recherche/cosmetique",
+            { "cosmetique-search" : $("#cosmetique-search").val() },
+            function(data) {
+                $("#cosmetique-effets").empty();
+                for (var i = 0; i < data.length; i++) {
+                    $("#cosmetique-effets").append("<li>" + data[i] + "</li>");
+                }
+            },
+            "json"
+        );
+        return false;
+    });
 });

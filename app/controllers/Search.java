@@ -7,7 +7,9 @@ import play.libs.Json;
 import play.data.Form;
 import play.mvc.*;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Security.Authenticated(Secured.class)
 public class Search extends Controller {
@@ -47,6 +49,22 @@ public class Search extends Controller {
         return ok(Json.toJson(result));
     }
 
+    public static Result autocompleteCosmetique(String cosmetique) {
+        List<Produit_cosmetique> cosmetiques = Produit_cosmetique.find
+                .where()
+                .like("nom", "%" + cosmetique + "%")
+                .orderBy("nom")
+                .setMaxRows(10)
+                .findList();
+
+        String[] result = new String[cosmetiques.size()];
+        for (int i = 0; i < result.length; i++) {
+            result[i] = cosmetiques.get(i).getNom();
+        }
+
+        return ok(Json.toJson(result));
+    }
+
     public static Result fromMedicament() {
         DynamicForm requestData = Form.form().bindFromRequest();
         String medicamentName = requestData.get("medicament-search");
@@ -72,6 +90,42 @@ public class Search extends Controller {
         String[] result = new String[dispositif.Effet_indesirables.size()];
         for (int i = 0; i < result.length; i++) {
             result[i] = dispositif.Effet_indesirables.get(i).getLabel();
+        }
+
+        return ok(Json.toJson(result));
+    }
+
+    public static Result fromCosmetique() {
+        DynamicForm requestData = Form.form().bindFromRequest();
+        String cosmetiqueName = requestData.get("cosmetique-search");
+
+        Set<Effet_indesirable> effets = new HashSet<Effet_indesirable>();
+        effets.addAll(Effet_indesirable.find
+            .where()
+            .eq("conservateurs.produit_cos.nom", cosmetiqueName)
+            .findList()
+        );
+        effets.addAll(Effet_indesirable.find
+            .where()
+            .eq("excipients.produit_cos.nom", cosmetiqueName)
+            .findList()
+        );
+        effets.addAll(Effet_indesirable.find
+            .where()
+            .eq("parabenes.produit_cos.nom", cosmetiqueName)
+            .findList()
+        );
+        effets.addAll(Effet_indesirable.find
+            .where()
+            .eq("principes_actifs.produit_cos.nom", cosmetiqueName)
+            .findList()
+        );
+
+        String[] result = new String[effets.size()];
+        int i = 0;
+        for (Effet_indesirable e : effets) {
+            result[i] = e.getLabel();
+            i++;
         }
 
         return ok(Json.toJson(result));

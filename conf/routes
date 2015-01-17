@@ -13,8 +13,10 @@ GET         /notifier                                   controllers.Application.
 GET         /recherche                                  controllers.Search.index()
 POST        /recherche/medicament                       controllers.Search.fromMedicament()
 POST        /recherche/dispositif                       controllers.Search.fromDispositif()
+POST        /recherche/cosmetique                       controllers.Search.fromCosmetique()
 GET         /autocomplete/medicament/:medicament        controllers.Search.autocompleteMedicament(medicament)
 GET         /autocomplete/dispositif/:dispositif        controllers.Search.autocompleteDispositif(dispositif)
+GET         /autocomplete/cosmetique/:cosmetique        controllers.Search.autocompleteCosmetique(cosmetique)
 
 
 GET         /Effet_indesirable                          controllers.Effet_indesirables.index()

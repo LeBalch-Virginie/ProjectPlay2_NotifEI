@@ -41,6 +41,18 @@ public class Effet_indesirable extends Model {
     public List<Dispo_medical> Dispo_medicaux = new ArrayList<Dispo_medical>();
 
     @ManyToMany
+    public List<Conservateur> conservateurs = new ArrayList<Conservateur>();
+
+    @ManyToMany
+    public List<Excipient> excipients = new ArrayList<Excipient>();
+
+    @ManyToMany
+    public List<Parabene> parabenes = new ArrayList<Parabene>();
+
+    @ManyToMany
+    public List<Principe_actif> principes_actifs = new ArrayList<Principe_actif>();
+
+    @ManyToMany
     @JoinTable(name="hierarchie_effet_indesirable", joinColumns=@JoinColumn(name="pere_id"), inverseJoinColumns=@JoinColumn(name="fils_id"))
     public List<Effet_indesirable> peres = new ArrayList<Effet_indesirable>();
 
