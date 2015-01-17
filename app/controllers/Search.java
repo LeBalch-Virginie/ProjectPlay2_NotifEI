@@ -65,6 +65,22 @@ public class Search extends Controller {
         return ok(Json.toJson(result));
     }
 
+    public static Result autocompleteEi(String ei) {
+        List<Effet_indesirable> effet_indesirables = Effet_indesirable.find
+                .where()
+                .like("label", "%" + ei + "%")
+                .orderBy("label")
+                .setMaxRows(10)
+                .findList();
+
+        String[] result = new String[effet_indesirables.size()];
+        for (int i = 0; i < result.length; i++) {
+            result[i] = effet_indesirables.get(i).getLabel();
+        }
+
+        return ok(Json.toJson(result));
+    }
+
     public static Result fromMedicament() {
         DynamicForm requestData = Form.form().bindFromRequest();
         String medicamentName = requestData.get("medicament-search");
@@ -94,6 +110,8 @@ public class Search extends Controller {
 
         return ok(Json.toJson(result));
     }
+
+
 
     public static Result fromCosmetique() {
         DynamicForm requestData = Form.form().bindFromRequest();

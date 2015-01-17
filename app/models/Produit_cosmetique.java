@@ -46,6 +46,9 @@ public class Produit_cosmetique extends Model {
     @ManyToMany(mappedBy = "produit_cos", cascade= CascadeType.ALL)
     public List<Conservateur> conservateurs = new ArrayList<Conservateur>();
 
+    @ManyToMany(mappedBy = "produits_cosmetiques", cascade= CascadeType.ALL)
+    public List<Effet_indesirable> Effet_indesirables = new ArrayList<Effet_indesirable>();
+
     public static Model.Finder<Long, Produit_cosmetique> find =
             new Finder<Long, Produit_cosmetique>(Long.class, Produit_cosmetique.class);
 

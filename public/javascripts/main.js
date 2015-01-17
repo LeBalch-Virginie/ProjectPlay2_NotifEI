@@ -88,4 +88,34 @@ jQuery(function($) {
         );
         return false;
     });
+
+    $("#ei-search").keyup(function() {
+        if ($(this).val() != "") {
+            $.getJSON(
+                "autocomplete/ei/" + $(this).val(),
+                function(data) {
+                    $("#ei-search").autocomplete({
+                        source: data
+                    });
+                }
+            );
+        }
+    });
+
+    $("#ei-form").submit(function(e) {
+        e.preventDefault();
+        $("#ei-effets").html('<li><img src="/assets/images/wait.gif" height="42" width="42" alt="wait" /></li>');
+        $.post(
+            "/recherche/ei",
+            { "ei-search" : $("#ei-search").val() },
+            function(data) {
+                $("#ei-effets").empty();
+                for (var i = 0; i < data.length; i++) {
+                    $("#ei-effets").append("<li>" + data[i] + "</li>");
+                }
+            },
+            "json"
+        );
+        return false;
+    });
 });

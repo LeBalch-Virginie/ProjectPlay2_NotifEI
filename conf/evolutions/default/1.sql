@@ -134,6 +134,18 @@ create table effet_indesirable_parabene (
   constraint pk_effet_indesirable_parabene primary key (effet_indesirable_id, parabene_id))
 ;
 
+create table effet_indesirable_medicament (
+  effet_indesirable_id           bigint not null,
+  medicament_id                  bigint not null,
+  constraint pk_effet_indesirable_medicament primary key (effet_indesirable_id, medicament_id))
+;
+
+create table effet_indesirable_produit_cosmetique (
+  effet_indesirable_id           bigint not null,
+  produit_cosmetique_id          bigint not null,
+  constraint pk_effet_indesirable_produit_cosmetique primary key (effet_indesirable_id, produit_cosmetique_id))
+;
+
 create table effet_indesirable_principe_actif (
   effet_indesirable_id           bigint not null,
   principe_actif_id              bigint not null,
@@ -220,6 +232,14 @@ alter table effet_indesirable_parabene add constraint fk_effet_indesirable_parab
 
 alter table effet_indesirable_parabene add constraint fk_effet_indesirable_parabene_parabene_02 foreign key (parabene_id) references parabene (id) on delete restrict on update restrict;
 
+alter table effet_indesirable_medicament add constraint fk_effet_indesirable_medicament_effet_indesirable_01 foreign key (effet_indesirable_id) references effet_indesirable (id) on delete restrict on update restrict;
+
+alter table effet_indesirable_medicament add constraint fk_effet_indesirable_medicament_medicament_02 foreign key (medicament_id) references medicament (id) on delete restrict on update restrict;
+
+alter table effet_indesirable_produit_cosmetique add constraint fk_effet_indesirable_produit_cosmetique_effet_indesirable_01 foreign key (effet_indesirable_id) references effet_indesirable (id) on delete restrict on update restrict;
+
+alter table effet_indesirable_produit_cosmetique add constraint fk_effet_indesirable_produit_cosmetique_produit_cosmetique_02 foreign key (produit_cosmetique_id) references produit_cosmetique (id) on delete restrict on update restrict;
+
 alter table effet_indesirable_principe_actif add constraint fk_effet_indesirable_principe_actif_effet_indesirable_01 foreign key (effet_indesirable_id) references effet_indesirable (id) on delete restrict on update restrict;
 
 alter table effet_indesirable_principe_actif add constraint fk_effet_indesirable_principe_actif_principe_actif_02 foreign key (principe_actif_id) references principe_actif (id) on delete restrict on update restrict;
@@ -287,6 +307,10 @@ drop table effet_indesirable_conservateur;
 drop table effet_indesirable_excipient;
 
 drop table effet_indesirable_parabene;
+
+drop table effet_indesirable_medicament;
+
+drop table effet_indesirable_produit_cosmetique;
 
 drop table effet_indesirable_principe_actif;
 

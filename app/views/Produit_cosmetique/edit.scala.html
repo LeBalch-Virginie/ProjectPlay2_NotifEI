@@ -14,6 +14,7 @@
       @form(routes.Produit_cosmetiques.update(produit_cosmetique.getId)) {
             @inputText(produit_cosmetiqueForm("nom"))
             <br/>
+            <h4>Principes actifs</h4>
             <select name="principe_ac.id[]" multiple="multiple">
                   @for(p <- models.Principe_actif.find.all) {
                         @if(produit_cosmetique.principe_ac.contains(p)) {
@@ -24,6 +25,7 @@
                   }
             </select>
             <br/>
+            <h4>Parabenes</h4>
             <select name="parabenes.id[]" multiple="multiple">
                   @for(p <- models.Parabene.find.all) {
                         @if(produit_cosmetique.parabenes.contains(p)) {
@@ -34,6 +36,7 @@
                   }
             </select>
             <br/>
+            <h4>Excipients</h4>
             <select name="excipients.id[]" multiple="multiple">
                   @for(e <- models.Excipient.find.all) {
                         @if(produit_cosmetique.excipients.contains(e)) {
@@ -44,6 +47,7 @@
                   }
             </select>
             <br/>
+            <h4>Conservateurs</h4>
             <select name="conservateurs.id[]" multiple="multiple">
                   @for(c <- models.Conservateur.find.all) {
                         @if(produit_cosmetique.conservateurs.contains(c)) {

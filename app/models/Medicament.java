@@ -36,6 +36,9 @@ public class Medicament extends Model{
     @ManyToMany(mappedBy = "medicaments", cascade= CascadeType.ALL)
     public List<Substance> substances = new ArrayList<Substance>();
 
+    @ManyToMany(mappedBy = "medicaments", cascade= CascadeType.ALL)
+    public List<Effet_indesirable> Effet_indesirables = new ArrayList<Effet_indesirable>();
+
 
     public static Model.Finder<Long, Medicament> find =
             new Model.Finder<Long, Medicament>(Long.class, Medicament.class);

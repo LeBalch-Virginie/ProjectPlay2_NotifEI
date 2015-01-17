@@ -50,6 +50,12 @@ public class Effet_indesirable extends Model {
     public List<Parabene> parabenes = new ArrayList<Parabene>();
 
     @ManyToMany
+    public List<Medicament> medicaments = new ArrayList<Medicament>();
+
+    @ManyToMany
+    public List<Produit_cosmetique> produits_cosmetiques = new ArrayList<Produit_cosmetique>();
+
+    @ManyToMany
     public List<Principe_actif> principes_actifs = new ArrayList<Principe_actif>();
 
     @ManyToMany

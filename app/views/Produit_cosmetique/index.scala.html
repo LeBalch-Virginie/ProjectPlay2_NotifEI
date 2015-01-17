@@ -9,28 +9,28 @@
         <form method="post" action="@routes.Produit_cosmetiques.add()">
             <input name="nom" placeholder="nom">
             <br/>
-            <h4>principe actif</h4>
+            <h4>Principes actifs</h4>
             <select name="principe_ac.id[]" multiple="multiple">
                 @for(p <- models.Principe_actif.find.all) {
                     <option value="@p.getId">@p.getNom</option>
                 }
             </select>
             <br/>
-            <h4>parabene</h4>
+            <h4>Parabenes</h4>
             <select name="parabenes.id[]" multiple="multiple">
                 @for(p <- models.Parabene.find.all) {
                     <option value="@p.getId">@p.getNom</option>
                 }
             </select>
             <br/>
-            <h4>excipients</h4>
+            <h4>Excipients</h4>
             <select name="excipients.id[]" multiple="multiple">
                 @for(e <- models.Excipient.find.all) {
                     <option value="@e.getId">@e.getNom</option>
                 }
             </select>
             <br/>
-            <h4>conservateurs</h4>
+            <h4>Conservateurs</h4>
             <select name="conservateurs.id[]" multiple="multiple">
                 @for(c <- models.Conservateur.find.all) {
                     <option value="@c.getId">@c.getNom</option>

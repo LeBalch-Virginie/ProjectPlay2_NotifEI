@@ -1,17 +1,47 @@
 @( user: User)
 
 @main("notifierEI", user) {
-    <h1>NotifierEi</h1>
+    <h1 xmlns="http://www.w3.org/1999/html">NotifierEi</h1>
 
     formulaire pour joindre un Ei avec un medicament
+    <fieldset>
+        <legend>Ajouter un Effets indésirable à un médicaments</legend>
+        <form action="" method="post" id="medicament-form">
+            <input type="text" name="medicament-search" id="medicament-search" placeholder="medicament"/>
+            <textarea type="text" name="ei-search" id="ei-search" placeholder="effetIndesirable"></textarea>
+            <button class="btn" type="submit" >notifier</button>
+        </form>
+        <ul id="medicament-effets"></ul>
+
+    </fieldset>
 
     </br>
     </br>
 
     formulaire pour joindre un Ei avec un dispositif medical
+    <fieldset>
+        <legend>Ajouter un Effets indésirable à un dispositif médical</legend>
+        <form action="" method="post" id="dispositif-form">
+            <input type="text" name="dispositif-search" id="dispositif-search" placeholder="dispositif"/>
+            <input type="text" name="ei-search" id="ei-search" placeholder="effetIndesirable"/>
+            <button class="btn" type="submit" >notifier</button>
+        </form>
+        <ul id="dispositif-effets"></ul>
+    </fieldset>
+
+
 
     </br>
 
     formulaire pour joindre un Ei avec un produit pharma
+    <fieldset>
+        <legend>Ajouter un Effets indésirable à un produit cosmétique</legend>
+        <form action="" method="post" id="cosmetique-form">
+            <input type="text" name="cosmetique-search" id="cosmetique-search" placeholder="cosmetique" />
+            <input type="text" name="ei-search" id="ei-search" placeholder="effetIndesirable"/>
+            <button class="btn" type="submit" >notifier</button>
+        </form>
+        <ul id="cosmetique-effets"></ul>
+    </fieldset>
 
 }
