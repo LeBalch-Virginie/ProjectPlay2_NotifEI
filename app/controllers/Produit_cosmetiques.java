@@ -81,12 +81,35 @@ public class Produit_cosmetiques extends Controller {
         Form<Produit_cosmetique> filledForm = Form.form(Produit_cosmetique.class).bindFromRequest();
         if (filledForm.hasErrors()) {
             Produit_cosmetique produit_cosmetique = Produit_cosmetique.find.where().idEq(id).findUnique();
-               return badRequest(views.html.Produit_cosmetique.edit.render(produit_cosmetique, filledForm, user));
+           return badRequest(views.html.Produit_cosmetique.edit.render(produit_cosmetique, filledForm, user));
         } else {
             Produit_cosmetique produit_cosmetique = filledForm.get();
             produit_cosmetique.setId(id);
+            Map<String, String[]> urlFormEncoded = play.mvc.Controller.request().body().asFormUrlEncoded();
+            if (urlFormEncoded != null) {
+                for (String key : urlFormEncoded.keySet()) {
+                    String[] value = urlFormEncoded.get(key);
+                    if (key.equals("principe_ac.id[]")) {
+                        for (int i = 0; i < value.length; i++) {
+                            produit_cosmetique.principe_ac.add(Principe_actif.find.byId(Long.valueOf(value[i])));
+                        }
+                    } else if (key.equals("parabenes.id[]")) {
+                        for (int i = 0; i < value.length; i++) {
+                            produit_cosmetique.parabenes.add(Parabene.find.byId(Long.valueOf(value[i])));
+                        }
+                    } else if (key.equals("excipients.id[]")) {
+                        for (int i = 0; i < value.length; i++) {
+                            produit_cosmetique.excipients.add(Excipient.find.byId(Long.valueOf(value[i])));
+                        }
+                    } else if (key.equals("conservateurs.id[]")) {
+                        for (int i = 0; i < value.length; i++) {
+                            produit_cosmetique.conservateurs.add(Conservateur.find.byId(Long.valueOf(value[i])));
+                        }
+                    }
+                }
+            }
             produit_cosmetique.update();
-                return redirect(controllers.routes.Produit_cosmetiques.index());
+            return redirect(controllers.routes.Produit_cosmetiques.index());
         }
     }
 

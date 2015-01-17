@@ -4,11 +4,56 @@
 
 @main("Modifier un produit cosmetique", user) {
       <p>id: @produit_cosmetique.getId</p>
+
+      @if(produit_cosmetiqueForm.hasGlobalErrors) {
+            <p class="error">
+                  @produit_cosmetiqueForm.globalError.message
+            </p>
+      }
+
       @form(routes.Produit_cosmetiques.update(produit_cosmetique.getId)) {
             @inputText(produit_cosmetiqueForm("nom"))
-            @select(produit_cosmetiqueForm("parabenes.id[]"), models.Parabene.find.all.map(p => (p.getId.toString, p.getNom)), 'multiple -> None)
-
+            <br/>
+            <select name="principe_ac.id[]" multiple="multiple">
+                  @for(p <- models.Principe_actif.find.all) {
+                        @if(produit_cosmetique.principe_ac.contains(p)) {
+                              <option value="@p.getId" selected="selected">@p.getNom</option>
+                        } else {
+                              <option value="@p.getId">@p.getNom</option>
+                        }
+                  }
+            </select>
+            <br/>
+            <select name="parabenes.id[]" multiple="multiple">
+                  @for(p <- models.Parabene.find.all) {
+                        @if(produit_cosmetique.parabenes.contains(p)) {
+                              <option value="@p.getId" selected="selected">@p.getNom</option>
+                        } else {
+                              <option value="@p.getId">@p.getNom</option>
+                        }
+                  }
+            </select>
+            <br/>
+            <select name="excipients.id[]" multiple="multiple">
+                  @for(e <- models.Excipient.find.all) {
+                        @if(produit_cosmetique.excipients.contains(e)) {
+                              <option value="@e.getId" selected="selected">@e.getNom</option>
+                        } else {
+                              <option value="@e.getId">@e.getNom</option>
+                        }
+                  }
+            </select>
+            <br/>
+            <select name="conservateurs.id[]" multiple="multiple">
+                  @for(c <- models.Conservateur.find.all) {
+                        @if(produit_cosmetique.conservateurs.contains(c)) {
+                              <option value="@c.getId" selected="selected">@c.getNom</option>
+                        } else {
+                              <option value="@c.getId">@c.getNom</option>
+                        }
+                  }
+            </select>
             <button class="btn" type="submit" value="Update">Modifier</button>
-        }
+      }
 }
 
