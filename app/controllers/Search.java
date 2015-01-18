@@ -90,16 +90,19 @@ public class Search extends Controller {
 
         Set<Effet_indesirable> effets = new HashSet<Effet_indesirable>();
         effets.addAll(Effet_indesirable.find
-            .fetch("Classe_chimiques.Substances.medicaments")
             .where()
                 .eq("Classe_chimiques.Substances.medicaments.nom", medicamentName)
             .findList()
         );
         effets.addAll(Effet_indesirable.find
-            .fetch("Classe_pharmacos.Substances.medicaments")
-            .where()
-            .eq("Classe_pharmacos.Substances.medicaments.nom", medicamentName)
-            .findList()
+                        .where()
+                        .eq("Classe_pharmacos.Substances.medicaments.nom", medicamentName)
+                        .findList()
+        );
+        effets.addAll(Effet_indesirable.find
+                        .where()
+                        .eq("medicaments.nom", medicamentName)
+                        .findList()
         );
 
         String[] result = new String[effets.size()];
@@ -149,6 +152,11 @@ public class Search extends Controller {
         effets.addAll(Effet_indesirable.find
             .where()
             .eq("principes_actifs.produit_cos.nom", cosmetiqueName)
+            .findList()
+        );
+        effets.addAll(Effet_indesirable.find
+            .where()
+            .eq("produits_cosmetiques.nom", cosmetiqueName)
             .findList()
         );
 
