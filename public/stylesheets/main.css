@@ -22,3 +22,7 @@ body {
 .registry-block {
     float: right;
 }
+
+.error {
+    color: red;
+}
