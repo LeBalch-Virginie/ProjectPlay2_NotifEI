@@ -23,7 +23,7 @@ public class User extends Model {
     public String password;
 
     //@Constraints.Required
-    public Boolean isAdmin;
+    public Boolean isAdmin = false;
 
     public String typeUser;
 
