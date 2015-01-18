@@ -21,7 +21,7 @@
     formulaire pour joindre un Ei avec un dispositif medical
     <fieldset>
         <legend>Ajouter un Effets indésirable à un dispositif médical</legend>
-        <form action="" method="post" id="dispositif-form">
+        <form action="@routes.NotifierEi.addEiDispo" method="post" >
             <input type="text" name="dispositif-search" id="dispositif-search" placeholder="Dispositif"/>
             <input type="text" name="ei-search" class="ei-search" placeholder="Effet indesirable"/>
             <button class="btn" type="submit" >notifier</button>
@@ -36,7 +36,7 @@
     formulaire pour joindre un Ei avec un produit pharma
     <fieldset>
         <legend>Ajouter un Effets indésirable à un produit cosmétique</legend>
-        <form action="" method="post" id="cosmetique-form">
+        <form action="@routes.NotifierEi.addEiproduit" method="post" >
             <input type="text" name="cosmetique-search" id="cosmetique-search" placeholder="Cosmétique" />
             <input type="text" name="ei-search" class="ei-search" placeholder="Effet indesirable"/>
             <button class="btn" type="submit" >notifier</button>
