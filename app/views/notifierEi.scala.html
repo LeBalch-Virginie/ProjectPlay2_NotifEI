@@ -6,9 +6,9 @@
     formulaire pour joindre un Ei avec un medicament
     <fieldset>
         <legend>Ajouter un Effets indésirable à un médicaments</legend>
-        <form action="" method="post" id="medicament-form">
-            <input type="text" name="medicament-search" id="medicament-search" placeholder="medicament"/>
-            <textarea type="text" name="ei-search" id="ei-search" placeholder="effetIndesirable"></textarea>
+        <form action="@routes.NotifierEi.addEiMedicament" method="post">
+            <input type="text" name="medicament-search" id="medicament-search" placeholder="Médicament"/>
+            <textarea type="text" name="ei-search" class="ei-search" placeholder="Effet indesirable"></textarea>
             <button class="btn" type="submit" >notifier</button>
         </form>
         <ul id="medicament-effets"></ul>
@@ -22,8 +22,8 @@
     <fieldset>
         <legend>Ajouter un Effets indésirable à un dispositif médical</legend>
         <form action="" method="post" id="dispositif-form">
-            <input type="text" name="dispositif-search" id="dispositif-search" placeholder="dispositif"/>
-            <input type="text" name="ei-search" id="ei-search" placeholder="effetIndesirable"/>
+            <input type="text" name="dispositif-search" id="dispositif-search" placeholder="Dispositif"/>
+            <input type="text" name="ei-search" class="ei-search" placeholder="Effet indesirable"/>
             <button class="btn" type="submit" >notifier</button>
         </form>
         <ul id="dispositif-effets"></ul>
@@ -37,8 +37,8 @@
     <fieldset>
         <legend>Ajouter un Effets indésirable à un produit cosmétique</legend>
         <form action="" method="post" id="cosmetique-form">
-            <input type="text" name="cosmetique-search" id="cosmetique-search" placeholder="cosmetique" />
-            <input type="text" name="ei-search" id="ei-search" placeholder="effetIndesirable"/>
+            <input type="text" name="cosmetique-search" id="cosmetique-search" placeholder="Cosmétique" />
+            <input type="text" name="ei-search" class="ei-search" placeholder="Effet indesirable"/>
             <button class="btn" type="submit" >notifier</button>
         </form>
         <ul id="cosmetique-effets"></ul>

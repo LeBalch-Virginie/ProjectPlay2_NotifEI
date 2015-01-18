@@ -18,6 +18,7 @@ GET         /autocomplete/medicament/:medicament        controllers.Search.autoc
 GET         /autocomplete/dispositif/:dispositif        controllers.Search.autocompleteDispositif(dispositif)
 GET         /autocomplete/cosmetique/:cosmetique        controllers.Search.autocompleteCosmetique(cosmetique)
 GET         /autocomplete/ei/:ei                        controllers.Search.autocompleteEi(ei)
+POST        /notifier/EiMedicament                      controllers.NotifierEi.addEiMedicament()
 
 
 GET         /Effet_indesirable                          controllers.Effet_indesirables.index()

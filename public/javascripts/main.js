@@ -89,12 +89,13 @@ jQuery(function($) {
         return false;
     });
 
-    $("#ei-search").keyup(function() {
+    $(".ei-search").keyup(function() {
+        var input = $(this);
         if ($(this).val() != "") {
             $.getJSON(
                 "autocomplete/ei/" + $(this).val(),
                 function(data) {
-                    $("#ei-search").autocomplete({
+                    input.autocomplete({
                         source: data
                     });
                 }
