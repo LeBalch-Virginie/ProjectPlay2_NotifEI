@@ -1,70 +1,59 @@
 @(form: Form[Authentication.AuthenticatedUser])
 
 @main("Authentification", null) {
-  <table>
-    <td>
-  @helper.form(routes.Authentication.authenticate) {
+    <div class="login-layout">
+        <div class="login-block">
+            @helper.form(routes.Authentication.authenticate) {
+            <h2>Qui êtes vous ?</h2>
 
-    <h2>Qui êtes vous ?</h2>
+            @if(form.hasGlobalErrors) {
+            <p class="error">@form.globalError.message</p>
+            }
 
-    @if(form.hasGlobalErrors) {
-      <p class="error">@form.globalError.message</p>
-    }
+            @if(flash.contains("success")) {
+            <p class="success">@flash.get("success")</p>
+            }
 
-    @if(flash.contains("success")) {
-      <p class="success">@flash.get("success")</p>
-    }
+            <p><input type="email" name="email" placeholder="Email" value="@form("email").value"></p>
+            <p><input type="password" name="password" placeholder="Password"></p>
+            <p><button class="btn" type="submit">Login</button></p>
+            }
+        </div>
 
-    <p><input type="email" name="email" placeholder="Email"
-    value="@form("email").value"></p>
-    <p><input type="password" name="password" placeholder="Password"></p>
-    <p><button class="btn" type="submit">Login</button></p>
-  }
+        <div class="registry-block">
+            <h2>Nouveau user</h2>
+            <form method="post" action="@routes.Authentication.register">
+                <p><input type="email" name="email" placeholder="Email" value="@form("email").value"></p>
+                <p><input type="search" name="name" placeholder="name"></p>
+                <p><input type="password" name="password" placeholder="Password"></p>
 
-
-  </td>
-    <td>____________________</td>
-    <td>
-      <fieldset>
-        <h2>Nouveau user</h2>
-        <form method="post" action="@routes.Authentication.register">
-
-          <p><input type="email" name="email" placeholder="Email"
-          value="@form("email").value"></p>
-          <p><input type="search" name="name" placeholder="name"></p>
-          <p><input type="password" name="password" placeholder="Password"></p>
-          <select name="typeUser" size="1" >
-            <option value="patient"> patient </option>
-            <option value="medecin">medecin </option>
-            <option value="patient"> association de patient </option>
-            <option value="medecin">medecin hospitalier </option>
-            <option value="patient"> medecin de ville </option>
-            <option value="medecin">CRPV </option>
-            <option value="medecin">CNPV </option>
-            <option value="patient"> laboratoire pharmaceutique </option>
-            <option value="medecin">laboratoire cosmetiques </option>
-          </select>
-
-          </br>
-          <select name="region" size="1" >
-            <option value="Alsace-Lorraine"> Alsace-Lorraine </option>
-            <option value="Aquitaine-Poitou">Aquitaine-Poitou </option>
-            <option value="Auvergne-Rhône"> Auvergne-Rhône </option>
-            <option value="Bourgogne-Franche-Comté">Bourgogne-Franche-Comté </option>
-            <option value="Bretagne"> Bretagne </option>
-            <option value="Grand Paris">Grand Paris </option>
-            <option value="Languedoc-Roussillon">Languedoc-Roussillon </option>
-            <option value="Nord-Pas-De-Calais">Nord-Pas-De-Calais </option>
-            <option value="Normandie">Normandie </option>
-            <option value="Paca-Corse"> Paca-Corse </option>
-            <option value="Val de Loire">Val de Loire </option>
-          </select>
-          <button class="btn" type="submit">Ajouter un utilisateur</button>
-        </form>
-      </fieldset>
-    </td>
-
-
-</table>
-
+                <select name="typeUser" size="1" >
+                    <opton value="patient"> patient </option>
+                        <option value="medecin">medecin </option>
+                        <opton value="patient"> association de patient </option>
+                            <option value="medecin">medecin hospitalier </option>
+                            <opton value="patient"> medecin de ville </option>
+                                <option value="medecin">CRPV </option>
+                                <option value="medecin">CNPV </option>
+                                <opton value="patient"> laboratoire pharmaceutique </option>
+                                    <option value="medecin">laboratoire cosmetiques </option>
+                </select>
+                </br>
+                <select name="region" size="1" >
+                    <option value="Alsace-Lorraine"> Alsace-Lorraine </option>
+                    <option value="Aquitaine-Poitou">Aquitaine-Poitou </option>
+                    <option value="Auvergne-Rhône"> Auvergne-Rhône </option>
+                    <option value="Bourgogne-Franche-Comté">Bourgogne-Franche-Comté </option>
+                    <option value="Bretagne"> Bretagne </option>
+                    <option value="Grand Paris">Grand Paris </option>
+                    <option value="Languedoc-Roussillon">Languedoc-Roussillon </option>
+                    <option value="Nord-Pas-De-Calais">Nord-Pas-De-Calais </option>
+                    <option value="Normandie">Normandie </option>
+                    <option value="Paca-Corse"> Paca-Corse </option>
+                    <option value="Val de Loire">Val de Loire </option>
+                </select>
+                <button class="btn" type="submit">Ajouter un utilisateur</button>
+            </form>
+        </div>
+    </div>
 }

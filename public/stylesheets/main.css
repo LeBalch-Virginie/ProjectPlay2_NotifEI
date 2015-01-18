@@ -2,3 +2,23 @@ body {
     padding-top: 60px;
     padding-bottom: 40px;
 }
+
+.login-layout {
+    padding-top: 25px;
+    margin: auto;
+    width: 800px;
+}
+
+.login-layout:after {
+    clear: both;
+    content: "";
+    display: block;
+}
+
+.login-block {
+    float: left;
+}
+
+.registry-block {
+    float: right;
+}
