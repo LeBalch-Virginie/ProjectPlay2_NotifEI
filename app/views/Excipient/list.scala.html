@@ -1,0 +1,15 @@
+@(excipients: List[Excipient], user: User)
+
+@import helper._
+
+@main("Consulter les excipients", user) {
+
+    <h2>Voici la liste des excipients </h2>
+
+    <ul>
+        @for(excipient <- excipients) {
+        <li> @excipient.getNom()</li>
+        }
+    </ul>
+}
+

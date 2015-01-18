@@ -1,0 +1,15 @@
+@(principe_actifs: List[Principe_actif], user: User)
+
+@import helper._
+
+@main("consulter les principes actifs", user) {
+
+    <h2>Voici la liste des principes actifs</h2>
+
+    <ul>
+        @for(principe_actif <- principe_actifs) {
+        <li>@principe_actif.getNom()</li>
+        }
+    </ul>
+}
+

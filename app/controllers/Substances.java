@@ -12,8 +12,9 @@ import play.mvc.Security;
 /**
  * Created by virginie on 18/11/2014.
  */
-@Security.Authenticated(Secured.class)
+
 public class Substances extends Controller {
+    @Security.Authenticated(Secured.class)
     public static Result index() {
         User user = User.find.byId(request().username());
         if (!user.isAdmin) {
@@ -25,6 +26,19 @@ public class Substances extends Controller {
         ));
     }
 
+    public static Result list() {
+        User user = null;
+        String email = ctx().session().get("email");
+        if (email != null) {
+            user = User.find.byId(email);
+        }
+        return ok(views.html.Substance.list.render(
+                Substance.find.orderBy("id").findList(),
+                user
+        ));
+    }
+
+    @Security.Authenticated(Secured.class)
     public static Result add() {
         User user = User.find.byId(request().username());
         if (!user.isAdmin) {
@@ -37,6 +51,7 @@ public class Substances extends Controller {
         return redirect(controllers.routes.Application.index());
     }
 
+    @Security.Authenticated(Secured.class)
     public static Result edit(Long id) {
         User user = User.find.byId(request().username());
         if (!user.isAdmin) {
@@ -47,6 +62,7 @@ public class Substances extends Controller {
         return ok(views.html.Substance.edit.render(substance, editForm, user));
     }
 
+    @Security.Authenticated(Secured.class)
     public static Result update(Long id) {
         User user = User.find.byId(request().username());
         if (!user.isAdmin) {
@@ -64,6 +80,7 @@ public class Substances extends Controller {
         }
     }
 
+    @Security.Authenticated(Secured.class)
     public static Result delete(Long id) {
         User user = User.find.byId(request().username());
         if (!user.isAdmin) {

@@ -1,6 +1,6 @@
 package controllers;
 
-import models.Parabene;
+
 import models.Principe_actif;
 import models.User;
 import play.data.Form;
@@ -12,8 +12,9 @@ import play.mvc.Security;
 /**
  * Created by virginie on 06/01/2015.
  */
-@Security.Authenticated(Secured.class)
+
 public class Principe_actifs extends Controller {
+    @Security.Authenticated(Secured.class)
     public static Result index() {
         User user = User.find.byId(request().username());
         if (!user.isAdmin) {
@@ -25,6 +26,19 @@ public class Principe_actifs extends Controller {
         ));
     }
 
+    public static Result list() {
+        User user = null;
+        String email = ctx().session().get("email");
+        if (email != null) {
+            user = User.find.byId(email);
+        }
+        return ok(views.html.Principe_actif.list.render(
+                Principe_actif.find.orderBy("id").findList(),
+                user
+        ));
+    }
+
+    @Security.Authenticated(Secured.class)
     public static Result add() {
         User user = User.find.byId(request().username());
         if (!user.isAdmin) {
@@ -38,6 +52,7 @@ public class Principe_actifs extends Controller {
         return redirect(controllers.routes.Principe_actifs.index());
     }
 
+    @Security.Authenticated(Secured.class)
     public static Result edit(Long id) {
         User user = User.find.byId(request().username());
         if (!user.isAdmin) {
@@ -48,6 +63,7 @@ public class Principe_actifs extends Controller {
         return ok(views.html.Principe_actif.edit.render(principe_actif, editForm, user));
     }
 
+    @Security.Authenticated(Secured.class)
     public static Result update(Long id) {
         User user = User.find.byId(request().username());
         if (!user.isAdmin) {
@@ -65,6 +81,7 @@ public class Principe_actifs extends Controller {
         }
     }
 
+    @Security.Authenticated(Secured.class)
     public static Result delete(Long id) {
         User user = User.find.byId(request().username());
         if (!user.isAdmin) {

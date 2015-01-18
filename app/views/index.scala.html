@@ -1,11 +1,22 @@
 @(user: User)
 
 @main("Consulter les effets indésirables", user) {
+
+    <li><a href="@routes.Substances.list()">consulter les substances</a></li>
+    <li><a href="@routes.Produit_cosmetiques.list()">consulter les produits cosmetiques</a></li>
+    <li><a href="@routes.Principe_actifs.list()">consulter les principes actifs</a></li>
+    <li><a href="@routes.Parabenes.list()">consulter les parabenes</a></li>
+    <li><a href="@routes.Medicaments.list()">consulter les médicaments</a></li>
+    <li><a href="@routes.Excipients.list()">consulter les excipients</a></li>
+    <li><a href="@routes.Effet_indesirables.list()">consulter les effets indésirables</a></li>
+    <li><a href="@routes.Dispo_medicaux.list()">consulter les dispositifs médicaux</a></li>
+    <li><a href="@routes.Conservateurs.list()">consulter les conservateurs</a></li>
+
     <h1>Consulter les effets indésirables</h1>
 
     <fieldset>
         <legend>Effets indésirables d'un médicaments</legend>
-        <form action="@routes.Search.fromMedicament" method="post" id="medicament-form">
+        <form action="" method="post" id="medicament-form">
             <input type="text" name="medicament-search" id="medicament-search" placeholder="medicament"/>
             <button class="btn" type="submit" >consulter</button>
         </form>

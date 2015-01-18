@@ -1,0 +1,14 @@
+@(effet_indesirables: List[models.Effet_indesirable], user: User)
+
+@import helper._
+
+@main("Consulter les effets indesirables", user) {
+
+    <h2>Voici la liste des  effets indesirables </h2>
+
+    <ul>
+        @for(effet_indesirable <- effet_indesirables) {
+        <li> @effet_indesirable.getLabel()</li>
+        }
+    </ul>
+}

@@ -2,10 +2,8 @@ package controllers;
 
 import models.Medicament;
 import models.User;
-import org.omg.CosNaming.NamingContextPackage.NotFound;
 import play.data.Form;
 import play.mvc.Controller;
-import play.mvc.Http.Request;
 import play.mvc.Result;
 import play.mvc.Results;
 import play.mvc.Security;
@@ -13,8 +11,9 @@ import play.mvc.Security;
 /**
  * Created by virginie on 18/11/2014.
  */
-@Security.Authenticated(Secured.class)
+
 public class Medicaments extends Controller {
+    @Security.Authenticated(Secured.class)
     public static Result index() {
         User user = User.find.byId(request().username());
         if (!user.isAdmin) {
@@ -26,20 +25,32 @@ public class Medicaments extends Controller {
         ));
     }
 
+    public static Result list() {
+        User user = null;
+        String email = ctx().session().get("email");
+        if (email != null) {
+            user = User.find.byId(email);
+        }
+        return ok(views.html.Medicament.list.render(
+                Medicament.find.orderBy("id").findList(),
+                user
+        ));
+    }
+
+    @Security.Authenticated(Secured.class)
     public static Result add() {
         User user = User.find.byId(request().username());
         if (!user.isAdmin) {
             return Results.forbidden("Need to be admin");
         }
         final Form<Medicament> medicamentForm = Form.form(Medicament.class).bindFromRequest();
-        //final Medicament effet_indesirable = medicamentForm.get();
         final Medicament medicament = medicamentForm.get();
 
-        //effet_indesirable.save();
         medicament.save();
         return redirect(controllers.routes.Application.index());
     }
 
+    @Security.Authenticated(Secured.class)
     public static Result edit(Long id) {
         User user = User.find.byId(request().username());
         if (!user.isAdmin) {
@@ -50,6 +61,7 @@ public class Medicaments extends Controller {
         return ok(views.html.Medicament.edit.render(medicament, editForm, user));
     }
 
+    @Security.Authenticated(Secured.class)
     public static Result update(Long id) {
         User user = User.find.byId(request().username());
         if (!user.isAdmin) {
@@ -67,6 +79,7 @@ public class Medicaments extends Controller {
         }
     }
 
+    @Security.Authenticated(Secured.class)
     public static Result delete(Long id) {
         User user = User.find.byId(request().username());
         if (!user.isAdmin) {
