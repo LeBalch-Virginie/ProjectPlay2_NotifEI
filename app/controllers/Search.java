@@ -88,15 +88,25 @@ public class Search extends Controller {
         DynamicForm requestData = Form.form().bindFromRequest();
         String medicamentName = requestData.get("medicament-search");
 
-        List<Effet_indesirable> effets = Effet_indesirable.find
-                .fetch("Classe_chimiques.Substances.medicaments")
-                .where()
-                    .eq("Classe_chimiques.Substances.medicaments.nom", medicamentName)
-                .findList();
+        Set<Effet_indesirable> effets = new HashSet<Effet_indesirable>();
+        effets.addAll(Effet_indesirable.find
+            .fetch("Classe_chimiques.Substances.medicaments")
+            .where()
+                .eq("Classe_chimiques.Substances.medicaments.nom", medicamentName)
+            .findList()
+        );
+        effets.addAll(Effet_indesirable.find
+            .fetch("Classe_pharmacos.Substances.medicaments")
+            .where()
+            .eq("Classe_pharmacos.Substances.medicaments.nom", medicamentName)
+            .findList()
+        );
 
         String[] result = new String[effets.size()];
-        for (int i = 0; i < effets.size(); i++) {
-            result[i] = effets.get(i).getLabel();
+        int i = 0;
+        for (Effet_indesirable e : effets) {
+            result[i] = e.getLabel();
+            i++;
         }
         return ok(Json.toJson(result));
     }
