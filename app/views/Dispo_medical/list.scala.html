@@ -1,0 +1,16 @@
+@(dispositif_medicaux: List[Dispo_medical], user: User)
+
+@import helper._
+
+@main("Consulter les dispositifs medicaux", user) {
+
+    <h2>Voici la liste des dispositifs medicaux </h2>
+
+    <!-- Liste des medicaments -->
+    <ul>
+        @for(dispo_medical <- dispositif_medicaux) {
+        <li> @dispo_medical.getNom()</li>
+        }
+    </ul>
+}
+

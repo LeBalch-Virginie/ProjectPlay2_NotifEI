@@ -14,8 +14,9 @@ import java.util.Map;
 /**
  * Created by virginie on 18/11/2014.
  */
-@Security.Authenticated(Secured.class)
+
 public class Produit_cosmetiques extends Controller {
+    @Security.Authenticated(Secured.class)
     public static Result index() {
         User user = User.find.byId(request().username());
         if (!user.isAdmin) {
@@ -27,9 +28,21 @@ public class Produit_cosmetiques extends Controller {
         ));
     }
 
+
+    public static Result list() {
+        User user = null;
+        String email = ctx().session().get("email");
+        if (email != null) {
+            user = User.find.byId(email);
+        }
+        return ok(views.html.Produit_cosmetique.list.render(
+                Produit_cosmetique.find.orderBy("id").findList(),
+                user
+        ));
+    }
+
+    @Security.Authenticated(Secured.class)
     public static Result add() {
-
-
         User user = User.find.byId(request().username());
         if (!user.isAdmin) {
             return Results.forbidden("Need to be admin");
@@ -63,6 +76,7 @@ public class Produit_cosmetiques extends Controller {
         return redirect(controllers.routes.Produit_cosmetiques.index());
     }
 
+    @Security.Authenticated(Secured.class)
     public static Result edit(Long id) {
         User user = User.find.byId(request().username());
         if (!user.isAdmin) {
@@ -73,6 +87,7 @@ public class Produit_cosmetiques extends Controller {
         return ok(views.html.Produit_cosmetique.edit.render(produit_cosmetique, editForm, user));
     }
 
+    @Security.Authenticated(Secured.class)
     public static Result update(Long id) {
         User user = User.find.byId(request().username());
         if (!user.isAdmin) {
@@ -113,6 +128,7 @@ public class Produit_cosmetiques extends Controller {
         }
     }
 
+    @Security.Authenticated(Secured.class)
     public static Result delete(Long id) {
         User user = User.find.byId(request().username());
         if (!user.isAdmin) {

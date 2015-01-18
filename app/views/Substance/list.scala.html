@@ -1,0 +1,14 @@
+@(substances: List[Substance], user: User)
+
+@import helper._
+
+@main("liste une substance", user) {
+
+    <h2> Voici la liste des substances</h2>
+
+    <ul>
+        @for(substance <- substances) {
+        <li>@substance.getLabel()</li>
+        }
+    </ul>
+}

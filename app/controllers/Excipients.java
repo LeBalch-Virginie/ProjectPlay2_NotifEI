@@ -1,6 +1,7 @@
 package controllers;
 
 import models.Excipient;
+import models.Parabene;
 import models.User;
 import play.data.Form;
 import play.mvc.Controller;
@@ -11,8 +12,10 @@ import play.mvc.Security;
 /**
  * Created by virginie on 06/01/2015.
  */
-@Security.Authenticated(Secured.class)
+
 public class Excipients extends Controller {
+
+    @Security.Authenticated(Secured.class)
     public static Result index() {
         User user = User.find.byId(request().username());
         if (!user.isAdmin) {
@@ -24,6 +27,19 @@ public class Excipients extends Controller {
         ));
     }
 
+    public static Result list() {
+        User user = null;
+        String email = ctx().session().get("email");
+        if (email != null) {
+            user = User.find.byId(email);
+        }
+        return ok(views.html.Excipient.list.render(
+                Excipient.find.orderBy("id").findList(),
+                user
+        ));
+    }
+
+    @Security.Authenticated(Secured.class)
     public static Result add() {
         User user = User.find.byId(request().username());
         if (!user.isAdmin) {
@@ -37,6 +53,7 @@ public class Excipients extends Controller {
         return redirect(controllers.routes.Excipients.index());
     }
 
+    @Security.Authenticated(Secured.class)
     public static Result edit(Long id) {
         User user = User.find.byId(request().username());
         if (!user.isAdmin) {
@@ -47,6 +64,7 @@ public class Excipients extends Controller {
         return ok(views.html.Excipient.edit.render(excipient, editForm, user));
     }
 
+    @Security.Authenticated(Secured.class)
     public static Result update(Long id) {
         User user = User.find.byId(request().username());
         if (!user.isAdmin) {
@@ -64,6 +82,7 @@ public class Excipients extends Controller {
         }
     }
 
+    @Security.Authenticated(Secured.class)
     public static Result delete(Long id) {
         User user = User.find.byId(request().username());
         if (!user.isAdmin) {

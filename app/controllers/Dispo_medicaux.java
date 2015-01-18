@@ -12,8 +12,9 @@ import play.mvc.Security;
 /**
  * Created by virginie on 06/01/2015.
  */
-@Security.Authenticated(Secured.class)
+
 public class Dispo_medicaux extends Controller {
+    @Security.Authenticated(Secured.class)
     public static Result index() {
         User user = User.find.byId(request().username());
         if (!user.isAdmin) {
@@ -25,6 +26,19 @@ public class Dispo_medicaux extends Controller {
         ));
     }
 
+    public static Result list() {
+        User user = null;
+        String email = ctx().session().get("email");
+        if (email != null) {
+            user = User.find.byId(email);
+        }
+        return ok(views.html.Dispo_medical.list.render(
+                Dispo_medical.find.orderBy("nom").findList(),
+                user
+        ));
+    }
+
+    @Security.Authenticated(Secured.class)
     public static Result add() {
         User user = User.find.byId(request().username());
         if (!user.isAdmin) {
@@ -38,6 +52,7 @@ public class Dispo_medicaux extends Controller {
         return redirect(controllers.routes.Dispo_medicaux.index());
     }
 
+    @Security.Authenticated(Secured.class)
     public static Result edit(Long id) {
         User user = User.find.byId(request().username());
         if (!user.isAdmin) {
@@ -48,6 +63,7 @@ public class Dispo_medicaux extends Controller {
         return ok(views.html.Dispo_medical.edit.render(dispo_medical, editForm, user));
     }
 
+    @Security.Authenticated(Secured.class)
     public static Result update(Long id) {
         User user = User.find.byId(request().username());
         if (!user.isAdmin) {
@@ -65,6 +81,7 @@ public class Dispo_medicaux extends Controller {
         }
     }
 
+    @Security.Authenticated(Secured.class)
     public static Result delete(Long id) {
         User user = User.find.byId(request().username());
         if (!user.isAdmin) {

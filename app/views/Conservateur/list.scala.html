@@ -1,0 +1,16 @@
+@(conservateurs: List[Conservateur], user: User)
+
+@import helper._
+
+@main("Consulter les conservateur", user) {
+
+    <h2>Voici la liste des conservateurs </h2>
+
+
+    <ul>
+        @for(conservateur <- conservateurs) {
+        <li>@conservateur.getNom()</li>
+        }
+    </ul>
+}
+

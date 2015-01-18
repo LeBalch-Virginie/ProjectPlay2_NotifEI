@@ -1,0 +1,17 @@
+@(produit_cosmetiques: List[Produit_cosmetique], user: User)
+
+@import helper._
+
+@main("consulter les produits cosmetique", user) {
+
+    <h2>Voici la liste des produits cosmetiques</h2>
+
+    <ul>
+        @for(produit <- produit_cosmetiques) {
+        <li>
+            @produit.getNom()
+        </li>
+        }
+    </ul>
+}
+

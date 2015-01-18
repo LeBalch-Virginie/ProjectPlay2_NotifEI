@@ -1,0 +1,15 @@
+@(parabenes: List[Parabene], user: User)
+
+@import helper._
+
+@main("Consulter les parabenes", user) {
+
+    <h2>Voici la liste des parabenes </h2>
+
+    <ul>
+        @for(parabene <- parabenes) {
+        <li>@parabene.getNom()</li>
+        }
+    </ul>
+}
+

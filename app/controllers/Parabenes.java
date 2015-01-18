@@ -1,6 +1,5 @@
 package controllers;
 
-import models.Dispo_medical;
 import models.Parabene;
 import models.User;
 import play.data.Form;
@@ -12,8 +11,9 @@ import play.mvc.Security;
 /**
  * Created by virginie on 06/01/2015.
  */
-@Security.Authenticated(Secured.class)
+
 public class Parabenes extends Controller {
+    @Security.Authenticated(Secured.class)
     public static Result index() {
         User user = User.find.byId(request().username());
         if (!user.isAdmin) {
@@ -25,6 +25,19 @@ public class Parabenes extends Controller {
         ));
     }
 
+    public static Result list() {
+        User user = null;
+        String email = ctx().session().get("email");
+        if (email != null) {
+            user = User.find.byId(email);
+        }
+        return ok(views.html.Parabene.list.render(
+                Parabene.find.orderBy("id").findList(),
+                user
+        ));
+    }
+
+    @Security.Authenticated(Secured.class)
     public static Result add() {
         User user = User.find.byId(request().username());
         if (!user.isAdmin) {
@@ -38,6 +51,7 @@ public class Parabenes extends Controller {
         return redirect(controllers.routes.Parabenes.index());
     }
 
+    @Security.Authenticated(Secured.class)
     public static Result edit(Long id) {
         User user = User.find.byId(request().username());
         if (!user.isAdmin) {
@@ -48,6 +62,7 @@ public class Parabenes extends Controller {
         return ok(views.html.Parabene.edit.render(parabene, editForm, user));
     }
 
+    @Security.Authenticated(Secured.class)
     public static Result update(Long id) {
         User user = User.find.byId(request().username());
         if (!user.isAdmin) {
@@ -65,6 +80,7 @@ public class Parabenes extends Controller {
         }
     }
 
+    @Security.Authenticated(Secured.class)
     public static Result delete(Long id) {
         User user = User.find.byId(request().username());
         if (!user.isAdmin) {

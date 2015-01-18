@@ -1,0 +1,15 @@
+@(medicaments: List[Medicament], user: User)
+
+@import helper._
+
+@main("Consulter les médicaments", user) {
+
+    <h2>Voici la liste des médicaments </h2>
+
+    <ul>
+        @for(medicament <- medicaments) {
+        <li> @medicament.getNom()</li>
+        }
+    </ul>
+}
+
