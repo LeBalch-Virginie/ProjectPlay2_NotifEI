@@ -3,6 +3,9 @@
 @main("notifierEI", user) {
     <h1 xmlns="http://www.w3.org/1999/html">NotifierEi</h1>
 
+    @if(flash.contains("error")) {
+        <p class="error">@flash.get("error")</p>
+    }
 
     <fieldset>
         <legend>Ajouter un Effets indésirable à un médicaments</legend>
@@ -17,18 +20,16 @@
 
     </br>
 
-
     <fieldset>
         <legend>Ajouter un Effets indésirable à un dispositif médical</legend>
         <form action="@routes.NotifierEi.addEiDispo" method="post" >
             <input type="text" name="dispositif-search" id="dispositif-search" placeholder="Dispositif"/>
             <textarea type="text" name="ei-search" class="ei-search" placeholder="Effet indesirable"></textarea>
+
             <button class="btn" type="submit" >notifier</button>
         </form>
         <ul id="dispositif-effets"></ul>
     </fieldset>
-
-
 
     </br>
 
@@ -37,6 +38,7 @@
         <form action="@routes.NotifierEi.addEiproduit" method="post" >
             <input type="text" name="cosmetique-search" id="cosmetique-search" placeholder="Cosmétique" />
             <textarea type="text" name="ei-search" class="ei-search" placeholder="Effet indesirable"></textarea>
+
             <button class="btn" type="submit" >notifier</button>
         </form>
         <ul id="cosmetique-effets"></ul>

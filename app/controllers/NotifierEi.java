@@ -17,11 +17,17 @@ public class NotifierEi extends Controller {
 
     public static Result addEiMedicament() {
         Medicament medicament = Medicament.find.where().eq("nom", request().body().asFormUrlEncoded().get("medicament-search")[0]).findUnique();
-        Effet_indesirable ei = Effet_indesirable.find.where().eq("label", request().body().asFormUrlEncoded().get("ei-search")[0]).findUnique();
-        System.out.println("valeur ei " + ei);
+        String eiLabel = request().body().asFormUrlEncoded().get("ei-search")[0];
+        Effet_indesirable ei = Effet_indesirable.find.where().eq("label", eiLabel).findUnique();
+        if (ei == null) {
+            ei = new Effet_indesirable();
+            ei.setLabel(eiLabel);
+        }
         if (!ei.medicaments.contains(medicament)) {
             ei.medicaments.add(medicament);
             ei.save();
+        } else {
+            flash("error", "Cette interaction a déjà été déclarée.");
         }
 
         return redirect(controllers.routes.Application.notifierEi());
@@ -29,11 +35,17 @@ public class NotifierEi extends Controller {
 
     public static Result addEiDispo() {
         Dispo_medical dispo_medical = Dispo_medical.find.where().eq("nom", request().body().asFormUrlEncoded().get("dispositif-search")[0]).findUnique();
-        Effet_indesirable ei = Effet_indesirable.find.where().eq("label", request().body().asFormUrlEncoded().get("ei-search")[0]).findUnique();
-        System.out.println("valeur ei " + ei);
+        String eiLabel = request().body().asFormUrlEncoded().get("ei-search")[0];
+        Effet_indesirable ei = Effet_indesirable.find.where().eq("label", eiLabel).findUnique();
+        if (ei == null) {
+            ei = new Effet_indesirable();
+            ei.setLabel(eiLabel);
+        }
         if (!ei.Dispo_medicaux.contains(dispo_medical)) {
             ei.Dispo_medicaux.add(dispo_medical);
             ei.save();
+        } else {
+            flash("error", "Cette interaction a déjà été déclarée.");
         }
 
         return redirect(controllers.routes.Application.notifierEi());
@@ -41,11 +53,17 @@ public class NotifierEi extends Controller {
 
     public static Result addEiproduit() {
         Produit_cosmetique produit = Produit_cosmetique.find.where().eq("nom", request().body().asFormUrlEncoded().get("cosmetique-search")[0]).findUnique();
-        Effet_indesirable ei = Effet_indesirable.find.where().eq("label", request().body().asFormUrlEncoded().get("ei-search")[0]).findUnique();
-        System.out.println("valeur ei " + ei);
+        String eiLabel = request().body().asFormUrlEncoded().get("ei-search")[0];
+        Effet_indesirable ei = Effet_indesirable.find.where().eq("label", eiLabel).findUnique();
+        if (ei == null) {
+            ei = new Effet_indesirable();
+            ei.setLabel(eiLabel);
+        }
         if (!ei.produits_cosmetiques.contains(produit)) {
             ei.produits_cosmetiques.add(produit);
             ei.save();
+        } else {
+            flash("error", "Cette interaction a déjà été déclarée.");
         }
 
         return redirect(controllers.routes.Application.notifierEi());
