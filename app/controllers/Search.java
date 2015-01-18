@@ -11,10 +11,13 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-@Security.Authenticated(Secured.class)
 public class Search extends Controller {
     public static Result index() {
-        return ok(views.html.Search.index.render(User.find.byId(request().username())));
+        User user = null;
+        if (request().username() != null) {
+            user = User.find.byId(request().username());
+        }
+        return ok(views.html.index.render(user));
     }
 
     public static Result autocompleteMedicament(String medicament) {
