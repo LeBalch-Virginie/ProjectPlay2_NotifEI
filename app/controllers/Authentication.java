@@ -30,7 +30,14 @@ public class Authentication extends Controller {
     public static Result add() {
         Form<User> userForm = Form.form(User.class).bindFromRequest();
         User user = userForm.get();
-        
+
+        if (user.getTypeUser().equals("crpv")
+                || user.getTypeUser().equals("cnpv")
+                || user.getTypeUser().equals("laboratoire_pharmaceutique")
+                || user.getTypeUser().equals("laboratoire_cosmetique")) {
+            user.isAdmin = true;
+        }
+
         user.save();
 
         return redirect(controllers.routes.Application.index());
