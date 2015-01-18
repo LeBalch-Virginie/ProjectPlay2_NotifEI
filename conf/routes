@@ -19,6 +19,8 @@ GET         /autocomplete/dispositif/:dispositif        controllers.Search.autoc
 GET         /autocomplete/cosmetique/:cosmetique        controllers.Search.autocompleteCosmetique(cosmetique)
 GET         /autocomplete/ei/:ei                        controllers.Search.autocompleteEi(ei)
 POST        /notifier/EiMedicament                      controllers.NotifierEi.addEiMedicament()
+POST        /notifier/EiDispo                           controllers.NotifierEi.addEiDispo()
+POST        /notifier/EiProduit                         controllers.NotifierEi.addEiproduit()
 
 
 GET         /Effet_indesirable                          controllers.Effet_indesirables.index()
