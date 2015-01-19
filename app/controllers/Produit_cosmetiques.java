@@ -3,13 +3,13 @@ package controllers;
 
 import models.*;
 import play.data.Form;
+import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.Results;
 import play.mvc.Security;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by virginie on 18/11/2014.
@@ -36,9 +36,23 @@ public class Produit_cosmetiques extends Controller {
             user = User.find.byId(email);
         }
         return ok(views.html.Produit_cosmetique.list.render(
-                Produit_cosmetique.find.orderBy("id").findList(),
                 user
         ));
+    }
+
+    public static Result search(String nom) {
+        User user = null;
+        String email = ctx().session().get("email");
+        if (email != null) {
+            user = User.find.byId(email);
+        }
+
+        List<Produit_cosmetique> produits = Produit_cosmetique.find.where().like("nom", "%" + nom + "%").findList();
+        Set<String> results = new HashSet<String>();
+        for (Produit_cosmetique p : produits) {
+            results.add(p.getNom());
+        }
+        return ok(Json.toJson(results));
     }
 
     @Security.Authenticated(Secured.class)

@@ -152,4 +152,25 @@ jQuery(function($) {
 
         return false;
     });
+
+    $("#produits-cosmetiques-search").submit(function(e) {
+        e.preventDefault();
+        if ($("#produits-cosmetiques-search input").val().length !== 0) {
+            $("#produits-cosmetiques-results tbody").html('<tr><td><img src="/assets/images/wait.gif" height="42" width="42" alt="wait" /></td></tr>');
+            $.get(
+                "/Produit_cosmetique/recherche/" + $("#produits-cosmetiques-search input").val(),
+                function(data) {
+                    $("#produits-cosmetiques-results tbody").empty();
+                    for (var i = 0; i < data.length; i++) {
+                        $("#produits-cosmetiques-results tbody").append("<tr><td>" + data[i] + "</td></tr>");
+                    }
+                },
+                "json"
+            );
+        } else {
+            $("#produits-cosmetiques-results tbody").empty();
+        }
+
+        return false;
+    });
 });

@@ -59,6 +59,8 @@ GET         /Produit_cosmetique/supprimer/:id           controllers.Produit_cosm
 GET         /Produit_cosmetique/modifier/:id            controllers.Produit_cosmetiques.edit(id: Long)
 POST        /Produit_cosmetique/enregistrer/:id         controllers.Produit_cosmetiques.update(id: Long)
 GET         /Produit_cosmetique/list                    controllers.Produit_cosmetiques.list()
+GET         /Produit_cosmetique/recherche/:nom          controllers.Produit_cosmetiques.search(nom)
+
 
 GET         /Parabene                                   controllers.Parabenes.index()
 POST        /Parabene/ajouter                           controllers.Parabenes.add()
