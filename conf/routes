@@ -37,6 +37,7 @@ GET         /Substance/supprimer/:id                    controllers.Substances.d
 GET         /Substance/modifier/:id                     controllers.Substances.edit(id: Long)
 POST        /Substance/enregistrer/:id                  controllers.Substances.update(id: Long)
 GET         /Substance/list                             controllers.Substances.list()
+GET         /Substance/recherche/:label                 controllers.Substances.search(label)
 
 GET         /Medicament                                 controllers.Medicaments.index()
 POST        /Medicament/ajouter                         controllers.Medicaments.add()

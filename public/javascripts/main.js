@@ -119,4 +119,25 @@ jQuery(function($) {
         );
         return false;
     });
+
+    $("#substances-search").submit(function(e) {
+        e.preventDefault();
+        if ($("#substances-search input").val().length !== 0) {
+            $("#substances-results tbody").html('<tr><td><img src="/assets/images/wait.gif" height="42" width="42" alt="wait" /></td></tr>');
+            $.get(
+                "/Substance/recherche/" + $("#substances-search input").val(),
+                function(data) {
+                    $("#substances-results tbody").empty();
+                    for (var i = 0; i < data.length; i++) {
+                        $("#substances-results tbody").append("<tr><td>" + data[i] + "</td></tr>");
+                    }
+                },
+                "json"
+            );
+        } else {
+            $("#substances-results tbody").empty();
+        }
+
+        return false;
+    });
 });

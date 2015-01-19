@@ -4,10 +4,15 @@ package controllers;
 import models.Substance;
 import models.User;
 import play.data.Form;
+import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.Results;
 import play.mvc.Security;
+
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 /**
  * Created by virginie on 18/11/2014.
@@ -33,9 +38,23 @@ public class Substances extends Controller {
             user = User.find.byId(email);
         }
         return ok(views.html.Substance.list.render(
-                Substance.find.orderBy("id").findList(),
                 user
         ));
+    }
+
+    public static Result search(String label) {
+        User user = null;
+        String email = ctx().session().get("email");
+        if (email != null) {
+            user = User.find.byId(email);
+        }
+
+        List<Substance> substances = Substance.find.where().like("label", "%" + label + "%").findList();
+        Set<String> results = new HashSet<String>();
+        for (Substance s : substances) {
+            results.add(s.getLabel());
+        }
+        return ok(Json.toJson(results));
     }
 
     @Security.Authenticated(Secured.class)
