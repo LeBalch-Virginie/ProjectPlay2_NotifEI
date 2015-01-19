@@ -20,9 +20,13 @@ jQuery(function($) {
             { "medicament-search" : $("#medicament-search").val() },
             function(data) {
                $("#medicament-effets").empty();
-                for (var i = 0; i < data.length; i++) {
-                    $("#medicament-effets").append("<li>" + data[i] + "</li>");
-                }
+               if (data.length === 0) {
+                    $("#medicament-effets").append("<li>Aucun résultat</li>");
+               } else {
+                   for (var i = 0; i < data.length; i++) {
+                       $("#medicament-effets").append("<li>" + data[i] + "</li>");
+                   }
+               }
             },
             "json"
         );
@@ -50,8 +54,12 @@ jQuery(function($) {
             { "dispositif-search" : $("#dispositif-search").val() },
             function(data) {
                 $("#dispositif-effets").empty();
-                for (var i = 0; i < data.length; i++) {
-                    $("#dispositif-effets").append("<li>" + data[i] + "</li>");
+                if (data.length === 0) {
+                    $("#dispositif-effets").append("<li>Aucun résultat</li>");
+                } else {
+                    for (var i = 0; i < data.length; i++) {
+                        $("#dispositif-effets").append("<li>" + data[i] + "</li>");
+                    }
                 }
             },
             "json"
@@ -80,8 +88,12 @@ jQuery(function($) {
             { "cosmetique-search" : $("#cosmetique-search").val() },
             function(data) {
                 $("#cosmetique-effets").empty();
-                for (var i = 0; i < data.length; i++) {
-                    $("#cosmetique-effets").append("<li>" + data[i] + "</li>");
+                if (data.length === 0) {
+                    $("#cosmetique-effets").append("<li>Aucun résultat</li>");
+                } else {
+                    for (var i = 0; i < data.length; i++) {
+                        $("#cosmetique-effets").append("<li>" + data[i] + "</li>");
+                    }
                 }
             },
             "json"
