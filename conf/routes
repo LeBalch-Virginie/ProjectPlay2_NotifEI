@@ -30,6 +30,7 @@ GET         /Effet_indesirable/modifier/:id             controllers.Effet_indesi
 POST        /Effet_indesirable/enregistrer/:id          controllers.Effet_indesirables.update(id: Long)
 GET         /Effet_indesirable/list                     controllers.Effet_indesirables.list()
 
+
 GET         /Substance                                  controllers.Substances.index()
 POST        /Substance/ajouter                          controllers.Substances.add()
 GET         /Substance/supprimer/:id                    controllers.Substances.delete(id: Long)

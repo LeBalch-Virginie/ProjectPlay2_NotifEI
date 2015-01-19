@@ -2,6 +2,8 @@
 
 @main("Consulter les effets indésirables", user) {
 
+    <h1>Consulter les différentes entitées</h1>
+
     <table class="container">
         <tr>
             <td><a class="brand" href="@routes.Substances.list()">Consulter les substances </br> <img class="img-circle" src=@routes.Assets.at("images/substance.png")></a></td>
@@ -21,34 +23,8 @@
         </tr>
     </table>
 
+    </br>
+    </br>
+    <a class="btn" href="@routes.Search.index()">effet indesirable vis a vis d'autre produit </a>
 
-    <h1>Consulter les effets indésirables</h1>
-
-    <fieldset>
-        <legend>Effets indésirables d'un médicaments</legend>
-        <form action="" method="post" id="medicament-form">
-            <input type="text" name="medicament-search" id="medicament-search" placeholder="medicament"/>
-            <button class="btn" type="submit" >consulter</button>
-        </form>
-        <ul id="medicament-effets"></ul>
-
-    </fieldset>
-
-    <fieldset>
-        <legend>Effets indésirables d'un dispositif médical</legend>
-        <form action="" method="post" id="dispositif-form">
-            <input type="text" name="dispositif-search" id="dispositif-search" placeholder="dispositif"/>
-            <button class="btn" type="submit" >consulter</button>
-        </form>
-        <ul id="dispositif-effets"></ul>
-    </fieldset>
-
-    <fieldset>
-        <legend>Effets indésirables d'un produit cosmétique</legend>
-        <form action="" method="post" id="cosmetique-form">
-            <input type="text" name="cosmetique-search" id="cosmetique-search" placeholder="cosmetique" />
-            <button class="btn" type="submit" >consulter</button>
-        </form>
-        <ul id="cosmetique-effets"></ul>
-    </fieldset>
 }

@@ -17,7 +17,7 @@ public class Search extends Controller {
         if (request().username() != null) {
             user = User.find.byId(request().username());
         }
-        return ok(views.html.index.render(user));
+        return ok(views.html.Effet_indesirable.consulter.render(user));
     }
 
     public static Result autocompleteMedicament(String medicament) {
