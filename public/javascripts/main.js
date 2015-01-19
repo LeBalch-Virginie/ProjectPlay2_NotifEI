@@ -215,4 +215,25 @@ jQuery(function($) {
 
         return false;
     });
+
+    $("#effets-search").submit(function(e) {
+        e.preventDefault();
+        if ($("#effets-search input").val().length !== 0) {
+            $("#effets-results tbody").html('<tr><td><img src="/assets/images/wait.gif" height="42" width="42" alt="wait" /></td></tr>');
+            $.get(
+                "/Effet_indesirable/recherche/" + $("#effets-search input").val(),
+                function(data) {
+                    $("#effets-results tbody").empty();
+                    for (var i = 0; i < data.length; i++) {
+                        $("#effets-results tbody").append("<tr><td>" + data[i] + "</td></tr>");
+                    }
+                },
+                "json"
+            );
+        } else {
+            $("#effets-results tbody").empty();
+        }
+
+        return false;
+    });
 });

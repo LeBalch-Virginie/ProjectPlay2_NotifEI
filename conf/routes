@@ -29,6 +29,7 @@ GET         /Effet_indesirable/supprimer/:id            controllers.Effet_indesi
 GET         /Effet_indesirable/modifier/:id             controllers.Effet_indesirables.edit(id: Long)
 POST        /Effet_indesirable/enregistrer/:id          controllers.Effet_indesirables.update(id: Long)
 GET         /Effet_indesirable/list                     controllers.Effet_indesirables.list()
+GET         /Effet_indesirable/recherche/:label         controllers.Effet_indesirables.search(label)
 
 
 GET         /Substance                                  controllers.Substances.index()
