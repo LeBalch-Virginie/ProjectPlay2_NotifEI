@@ -14,8 +14,9 @@ import java.util.Set;
 public class Search extends Controller {
     public static Result index() {
         User user = null;
-        if (request().username() != null) {
-            user = User.find.byId(request().username());
+        String email = ctx().session().get("email");
+        if (email != null) {
+            user = User.find.byId(email);
         }
         return ok(views.html.Effet_indesirable.consulter.render(user));
     }
