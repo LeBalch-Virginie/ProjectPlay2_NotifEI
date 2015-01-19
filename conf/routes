@@ -53,6 +53,7 @@ GET         /Dispo_medical/supprimer/:id                controllers.Dispo_medica
 GET         /Dispo_medical/modifier/:id                 controllers.Dispo_medicaux.edit(id: Long)
 POST        /Dispo_medical/enregistrer/:id              controllers.Dispo_medicaux.update(id: Long)
 GET         /Dispo_medical/list                         controllers.Dispo_medicaux.list()
+GET         /Dispo_medical/recherche/:nom               controllers.Dispo_medicaux.search(nom)
 
 GET         /Produit_cosmetique                         controllers.Produit_cosmetiques.index()
 POST        /Produit_cosmetique/ajouter                 controllers.Produit_cosmetiques.add()

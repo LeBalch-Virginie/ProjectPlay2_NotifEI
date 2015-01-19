@@ -194,4 +194,25 @@ jQuery(function($) {
 
         return false;
     });
+
+    $("#dispositifs-search").submit(function(e) {
+        e.preventDefault();
+        if ($("#dispositifs-search input").val().length !== 0) {
+            $("#dispositifs-results tbody").html('<tr><td><img src="/assets/images/wait.gif" height="42" width="42" alt="wait" /></td></tr>');
+            $.get(
+                "/Dispo_medical/recherche/" + $("#dispositifs-search input").val(),
+                function(data) {
+                    $("#dispositifs-results tbody").empty();
+                    for (var i = 0; i < data.length; i++) {
+                        $("#dispositifs-results tbody").append("<tr><td>" + data[i] + "</td></tr>");
+                    }
+                },
+                "json"
+            );
+        } else {
+            $("#dispositifs-results tbody").empty();
+        }
+
+        return false;
+    });
 });
