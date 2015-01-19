@@ -120,12 +120,15 @@ public class Search extends Controller {
         String dispositifName = requestData.get("dispositif-search");
         Dispo_medical dispositif = Dispo_medical.find.where().eq("nom", dispositifName).findUnique();
 
-        String[] result = new String[dispositif.Effet_indesirables.size()];
-        for (int i = 0; i < result.length; i++) {
-            result[i] = dispositif.Effet_indesirables.get(i).getLabel();
+        if (dispositif == null) {
+            return ok(Json.toJson(new String[0]));
+        } else {
+            String[] result = new String[dispositif.Effet_indesirables.size()];
+            for (int i = 0; i < result.length; i++) {
+                result[i] = dispositif.Effet_indesirables.get(i).getLabel();
+            }
+            return ok(Json.toJson(result));
         }
-
-        return ok(Json.toJson(result));
     }
 
 
