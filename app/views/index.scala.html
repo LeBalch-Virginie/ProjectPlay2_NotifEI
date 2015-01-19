@@ -4,22 +4,20 @@
 
     <table class="container">
         <tr>
-            <td><a href="@routes.Substances.list()">consulter les substances</a></td>
-            <td><a href="@routes.Produit_cosmetiques.list()">consulter les produits cosmetiques</a></td>
-            <td><a href="@routes.Principe_actifs.list()">consulter les principes actifs</a></td>
+            <td><a class="brand" href="@routes.Substances.list()">Consulter les substances </br> <img class="img-circle" src=@routes.Assets.at("images/substance.png")></a></td>
+            <td><a href="@routes.Produit_cosmetiques.list()">consulter les produits cosmetiques </br>  <img class="img-circle" src=@routes.Assets.at("images/produit_cosmetique.png")></a></td>
+            <td><a href="@routes.Medicaments.list()">consulter les médicaments </br> <img class="img-circle" src=@routes.Assets.at("images/medoc.png")></a></td>
+        </tr>
+        <tr>
+            <td><a href="@routes.Dispo_medicaux.list()">consulter les dispositifs médicaux </br> <img class="img-circle" src=@routes.Assets.at("images/dispositif_medicaux.jpg")></a></td>
+            <td><a href="@routes.Effet_indesirables.list()">consulter les effets indésirables </br>  <img class="img-circle" src=@routes.Assets.at("images/Fatigue.png")></a></td>
+            <td><a href="@routes.Excipients.list()">consulter les excipients </br> <img class="img-circle" src=@routes.Assets.at("images/Excipients.png")></a></td>
 
         </tr>
         <tr>
-            <td><a href="@routes.Medicaments.list()">consulter les médicaments</a></td>
-            <td><a href="@routes.Excipients.list()">consulter les excipients</a></td>
-            <td><a href="@routes.Excipients.list()">consulter les excipients</a></td>
-
-        </tr>
-        <tr>
-            <td><a href="@routes.Parabenes.list()">consulter les parabenes</a></td>
-            <td><a href="@routes.Effet_indesirables.list()">consulter les effets indésirables</a></td>
-            <td><a href="@routes.Dispo_medicaux.list()">consulter les dispositifs médicaux</a></td>
-            <td><a href="@routes.Conservateurs.list()">consulter les conservateurs</a></td>
+            <td><a href="@routes.Conservateurs.list()">consulter les conservateurs </br> <img class="img-circle" src=@routes.Assets.at("images/conservateur.jpg")></a></td>
+            <td><a href="@routes.Parabenes.list()">consulter les parabenes </br> <img class="img-circle" src=@routes.Assets.at("images/paraben.jpg")></a></td>
+            <td><a href="@routes.Principe_actifs.list()">consulter les principes actifs </br> <img class="img-circle" src=@routes.Assets.at("images/principes.jpg")></a></td>
         </tr>
     </table>
 
