@@ -3,10 +3,15 @@ package controllers;
 import models.Medicament;
 import models.User;
 import play.data.Form;
+import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.Results;
 import play.mvc.Security;
+
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 /**
  * Created by virginie on 18/11/2014.
@@ -32,9 +37,23 @@ public class Medicaments extends Controller {
             user = User.find.byId(email);
         }
         return ok(views.html.Medicament.list.render(
-                Medicament.find.orderBy("id").findList(),
                 user
         ));
+    }
+
+    public static Result search(String nom) {
+        User user = null;
+        String email = ctx().session().get("email");
+        if (email != null) {
+            user = User.find.byId(email);
+        }
+
+        List<Medicament> medicaments = Medicament.find.where().like("nom", "%" + nom + "%").findList();
+        Set<String> results = new HashSet<String>();
+        for (Medicament m : medicaments) {
+            results.add(m.getNom());
+        }
+        return ok(Json.toJson(results));
     }
 
     @Security.Authenticated(Secured.class)

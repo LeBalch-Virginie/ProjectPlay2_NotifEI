@@ -45,6 +45,7 @@ GET         /Medicament/supprimer/:id                   controllers.Medicaments.
 GET         /Medicament/modifier/:id                    controllers.Medicaments.edit(id: Long)
 POST        /Medicament/enregistrer/:id                 controllers.Medicaments.update(id: Long)
 GET         /Medicament/list                            controllers.Medicaments.list()
+GET         /Medicament/recherche/:nom                  controllers.Medicaments.search(nom)
 
 GET         /Dispo_medical                              controllers.Dispo_medicaux.index()
 POST        /Dispo_medical/ajouter                      controllers.Dispo_medicaux.add()

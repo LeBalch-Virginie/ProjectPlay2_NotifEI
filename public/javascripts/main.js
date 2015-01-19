@@ -173,4 +173,25 @@ jQuery(function($) {
 
         return false;
     });
+
+    $("#medicaments-search").submit(function(e) {
+        e.preventDefault();
+        if ($("#medicaments-search input").val().length !== 0) {
+            $("#medicaments-results tbody").html('<tr><td><img src="/assets/images/wait.gif" height="42" width="42" alt="wait" /></td></tr>');
+            $.get(
+                "/Medicament/recherche/" + $("#medicaments-search input").val(),
+                function(data) {
+                    $("#medicaments-results tbody").empty();
+                    for (var i = 0; i < data.length; i++) {
+                        $("#medicaments-results tbody").append("<tr><td>" + data[i] + "</td></tr>");
+                    }
+                },
+                "json"
+            );
+        } else {
+            $("#medicaments-results tbody").empty();
+        }
+
+        return false;
+    });
 });
