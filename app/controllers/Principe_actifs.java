@@ -4,10 +4,15 @@ package controllers;
 import models.Principe_actif;
 import models.User;
 import play.data.Form;
+import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.Results;
 import play.mvc.Security;
+
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 /**
  * Created by virginie on 06/01/2015.
@@ -33,9 +38,23 @@ public class Principe_actifs extends Controller {
             user = User.find.byId(email);
         }
         return ok(views.html.Principe_actif.list.render(
-                Principe_actif.find.orderBy("id").findList(),
                 user
         ));
+    }
+
+    public static Result search(String nom) {
+        User user = null;
+        String email = ctx().session().get("email");
+        if (email != null) {
+            user = User.find.byId(email);
+        }
+
+        List<Principe_actif> principe_actifs = Principe_actif.find.where().like("nom", "%" + nom + "%").findList();
+        Set<String> results = new HashSet<String>();
+        for (Principe_actif s : principe_actifs) {
+            results.add(s.getNom());
+        }
+        return ok(Json.toJson(results));
     }
 
     @Security.Authenticated(Secured.class)

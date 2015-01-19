@@ -66,6 +66,7 @@ GET         /Parabene/supprimer/:id                     controllers.Parabenes.de
 GET         /Parabene/modifier/:id                      controllers.Parabenes.edit(id: Long)
 POST        /Parabene/enregistrer/:id                   controllers.Parabenes.update(id: Long)
 GET         /Parabene/list                              controllers.Parabenes.list()
+GET         /Parabene/recherche/:nom                    controllers.Parabenes.search(nom)
 
 GET         /Principe_actif                             controllers.Principe_actifs.index()
 POST        /Principe_actif/ajouter                     controllers.Principe_actifs.add()
@@ -73,6 +74,7 @@ GET         /Principe_actif/supprimer/:id               controllers.Principe_act
 GET         /Principe_actif/modifier/:id                controllers.Principe_actifs.edit(id: Long)
 POST        /Principe_actif/enregistrer/:id             controllers.Principe_actifs.update(id: Long)
 GET         /Principe_actif/list                        controllers.Principe_actifs.list()
+GET         /Principe_actif/recherche/:nom              controllers.Principe_actifs.search(nom)
 
 GET         /Excipient                                  controllers.Excipients.index()
 POST        /Excipient/ajouter                          controllers.Excipients.add()
@@ -80,6 +82,7 @@ GET         /Excipient/supprimer/:id                    controllers.Excipients.d
 GET         /Excipient/modifier/:id                     controllers.Excipients.edit(id: Long)
 POST        /Excipient/enregistrer/:id                  controllers.Excipients.update(id: Long)
 GET         /Excipient/list                             controllers.Excipients.list()
+GET         /Excipient/recherche/:nom                   controllers.Excipients.search(nom)
 
 GET         /Conservateur                               controllers.Conservateurs.index()
 POST        /Conservateur/ajouter                       controllers.Conservateurs.add()
@@ -87,7 +90,7 @@ GET         /Conservateur/supprimer/:id                 controllers.Conservateur
 GET         /Conservateur/modifier/:id                  controllers.Conservateurs.edit(id: Long)
 POST        /Conservateur/enregistrer/:id               controllers.Conservateurs.update(id: Long)
 GET         /Conservateur/list                          controllers.Conservateurs.list()
-
+GET         /Conservateur/recherche/:nom                controllers.Conservateurs.search(nom)
 
 # Authentication
 GET         /login                                      controllers.Authentication.login()

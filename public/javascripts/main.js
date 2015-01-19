@@ -140,4 +140,89 @@ jQuery(function($) {
 
         return false;
     });
+
+    $("#conservateurs-search").submit(function(e) {
+        e.preventDefault();
+        if ($("#conservateurs-search input").val().length !== 0) {
+            $("#conservateurs-results tbody").html('<tr><td><img src="/assets/images/wait.gif" height="42" width="42" alt="wait" /></td></tr>');
+            $.get(
+                "/Conservateur/recherche/" + $("#conservateurs-search input").val(),
+                function(data) {
+                    $("#conservateurs-results tbody").empty();
+                    for (var i = 0; i < data.length; i++) {
+                        $("#conservateurs-results tbody").append("<tr><td>" + data[i] + "</td></tr>");
+                    }
+                },
+                "json"
+            );
+        } else {
+            $("#conservateurs-results tbody").empty();
+        }
+
+        return false;
+    });
+
+    $("#parabenes-search").submit(function(e) {
+        e.preventDefault();
+        if ($("#parabenes-search input").val().length !== 0) {
+            $("#parabenes-results tbody").html('<tr><td><img src="/assets/images/wait.gif" height="42" width="42" alt="wait" /></td></tr>');
+            $.get(
+                "/Parabene/recherche/" + $("#parabenes-search input").val(),
+                function(data) {
+                    $("#parabenes-results tbody").empty();
+                    for (var i = 0; i < data.length; i++) {
+                        $("#parabenes-results tbody").append("<tr><td>" + data[i] + "</td></tr>");
+                    }
+                },
+                "json"
+            );
+        } else {
+            $("#parabenes-results tbody").empty();
+        }
+
+        return false;
+    });
+
+    $("#principes-search").submit(function(e) {
+        e.preventDefault();
+        if ($("#principes-search input").val().length !== 0) {
+            $("#principes-results tbody").html('<tr><td><img src="/assets/images/wait.gif" height="42" width="42" alt="wait" /></td></tr>');
+            $.get(
+                "/Principe_actif/recherche/" + $("#principes-search input").val(),
+                function(data) {
+                    $("#principes-results tbody").empty();
+                    for (var i = 0; i < data.length; i++) {
+                        $("#principes-results tbody").append("<tr><td>" + data[i] + "</td></tr>");
+                    }
+                },
+                "json"
+            );
+        } else {
+            $("#principes-results tbody").empty();
+        }
+
+        return false;
+    });
+
+    $("#excipients-search").submit(function(e) {
+        e.preventDefault();
+        if ($("#excipients-search input").val().length !== 0) {
+            $("#excipients-results tbody").html('<tr><td><img src="/assets/images/wait.gif" height="42" width="42" alt="wait" /></td></tr>');
+            $.get(
+                "/Excipient/recherche/" + $("#excipients-search input").val(),
+                function(data) {
+                    $("#excipients-results tbody").empty();
+                    for (var i = 0; i < data.length; i++) {
+                        $("#excipients-results tbody").append("<tr><td>" + data[i] + "</td></tr>");
+                    }
+                },
+                "json"
+            );
+        } else {
+            $("#excipients-results tbody").empty();
+        }
+
+        return false;
+    });
+
 });
