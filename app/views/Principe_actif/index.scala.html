@@ -14,14 +14,21 @@
         </form>
     </fieldset>
 
-    <ul>
+    <table class="table table-striped table-bordered table-hover table-condensed">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>nom</th>
+            </tr>
+        </thead>
         @for(principe_actif <- principe_actifs) {
-        <li>
-            @principe_actif.getId() @principe_actif.getNom()
-            - <a href="@routes.Principe_actifs.edit(principe_actif.getId())">Modifier</a>
-            - <a href="@routes.Principe_actifs.delete(principe_actif.getId())">Supprimer</a>
-        </li>
+            <tr>
+                <td>@principe_actif.getId()</td>
+                <td>@principe_actif.getNom()</td>
+                <td><a href="@routes.Principe_actifs.edit(principe_actif.getId())">Modifier</a></td>
+                <td><a href="@routes.Principe_actifs.delete(principe_actif.getId())">Supprimer</a></td>
+            </tr>
         }
-    </ul>
+    </table>
 }
 

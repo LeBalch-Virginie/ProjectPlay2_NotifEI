@@ -6,9 +6,18 @@
 
     <h2> Voici la liste des substances</h2>
 
-    <ul>
+    <table class="table table-striped table-bordered table-hover table-condensed">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>nom</th>
+            </tr>
+        </thead>
         @for(substance <- substances) {
-        <li>@substance.getLabel()</li>
+            <tr>
+                <td>@substance.getId()</td>
+                <td>@substance.getLabel()</td>
+            </tr>
         }
-    </ul>
+    </table>
 }

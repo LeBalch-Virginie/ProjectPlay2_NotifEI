@@ -2,15 +2,27 @@
 
 @main("Consulter les effets indésirables", user) {
 
-    <li><a href="@routes.Substances.list()">consulter les substances</a></li>
-    <li><a href="@routes.Produit_cosmetiques.list()">consulter les produits cosmetiques</a></li>
-    <li><a href="@routes.Principe_actifs.list()">consulter les principes actifs</a></li>
-    <li><a href="@routes.Parabenes.list()">consulter les parabenes</a></li>
-    <li><a href="@routes.Medicaments.list()">consulter les médicaments</a></li>
-    <li><a href="@routes.Excipients.list()">consulter les excipients</a></li>
-    <li><a href="@routes.Effet_indesirables.list()">consulter les effets indésirables</a></li>
-    <li><a href="@routes.Dispo_medicaux.list()">consulter les dispositifs médicaux</a></li>
-    <li><a href="@routes.Conservateurs.list()">consulter les conservateurs</a></li>
+    <table class="container">
+        <tr>
+            <td><a href="@routes.Substances.list()">consulter les substances</a></td>
+            <td><a href="@routes.Produit_cosmetiques.list()">consulter les produits cosmetiques</a></td>
+            <td><a href="@routes.Principe_actifs.list()">consulter les principes actifs</a></td>
+
+        </tr>
+        <tr>
+            <td><a href="@routes.Medicaments.list()">consulter les médicaments</a></td>
+            <td><a href="@routes.Excipients.list()">consulter les excipients</a></td>
+            <td><a href="@routes.Excipients.list()">consulter les excipients</a></td>
+
+        </tr>
+        <tr>
+            <td><a href="@routes.Parabenes.list()">consulter les parabenes</a></td>
+            <td><a href="@routes.Effet_indesirables.list()">consulter les effets indésirables</a></td>
+            <td><a href="@routes.Dispo_medicaux.list()">consulter les dispositifs médicaux</a></td>
+            <td><a href="@routes.Conservateurs.list()">consulter les conservateurs</a></td>
+        </tr>
+    </table>
+
 
     <h1>Consulter les effets indésirables</h1>
 
