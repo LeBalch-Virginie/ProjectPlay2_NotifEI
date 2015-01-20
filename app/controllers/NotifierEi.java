@@ -38,11 +38,9 @@ public class NotifierEi extends Controller {
         }
         //initialisation de la declaration
         Declaration declaration = new Declaration();
-        java.util.Date uDate = new java.util.Date();
-        declaration.setDate(uDate);
+        declaration.setDate(new Date());
         User user = User.find.byId(request().username());
-        declaration.setUser(user.email);
-        declaration.setRegion(user.region);
+        declaration.setUser(user);
         declaration.setEffet_ind(ei.getLabel());
         declaration.setProduit(medicament.getNom());
         if(ei != null && medicament != null) {
@@ -77,11 +75,9 @@ public class NotifierEi extends Controller {
 
         //initialisation de la declaration
         Declaration declaration = new Declaration();
-        java.util.Date uDate = new java.util.Date();
-        declaration.setDate(uDate);
+        declaration.setDate(new Date());
         User user = User.find.byId(request().username());
-        declaration.setUser(user.email);
-        declaration.setRegion(user.region);
+        declaration.setUser(user);
         declaration.setEffet_ind(ei.getLabel());
         declaration.setProduit(dispo_medical.getNom());
         if(ei != null && dispo_medical != null) {
@@ -117,11 +113,9 @@ public class NotifierEi extends Controller {
 
         //initialisation de la declaration
         Declaration declaration = new Declaration();
-        java.util.Date uDate = new java.util.Date();
-        declaration.setDate(uDate);
+        declaration.setDate(new Date());
         User user = User.find.byId(request().username());
-        declaration.setUser(user.email);
-        declaration.setRegion(user.region);
+        declaration.setUser(user);
         declaration.setEffet_ind(ei.getLabel());
         declaration.setProduit(produit.getNom());
         if(ei != null && produit != null) {

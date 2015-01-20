@@ -36,11 +36,13 @@ public class Authentication extends Controller {
                 || user.getTypeUser().equals("laboratoire_pharmaceutique")
                 || user.getTypeUser().equals("laboratoire_cosmetique")) {
             user.isAdmin = true;
+        } else {
+            user.isAdmin = false;
         }
 
         user.save();
 
-        return redirect(controllers.routes.Application.index());
+        return redirect(controllers.routes.Authentication.login());
     }
 
 
