@@ -6,6 +6,7 @@ import play.data.DynamicForm;
 import play.libs.Json;
 import play.data.Form;
 import play.mvc.*;
+import scala.xml.dtd.Decl;
 
 import java.util.HashSet;
 import java.util.List;
@@ -109,7 +110,14 @@ public class Search extends Controller {
         String[] result = new String[effets.size()];
         int i = 0;
         for (Effet_indesirable e : effets) {
-            result[i] = e.getLabel();
+            int count = Declaration.find.where().eq("effet_ind", e.getLabel()).findRowCount();
+            Declaration firstDeclaration = Declaration.find.where().eq("effet_ind", e.getLabel()).orderBy("date asc").setMaxRows(1).findUnique();
+            Declaration lastDeclaration = Declaration.find.where().eq("effet_ind", e.getLabel()).orderBy("date desc").setMaxRows(1).findUnique();
+
+            result[i] = e.getLabel()
+                    + " / <strong>Premier cas :</strong> " + (firstDeclaration != null? firstDeclaration.getDate(): "Inconnu")
+                    + " /  <strong>Dernier cas :</strong> " + (lastDeclaration != null? lastDeclaration.getDate(): "Inconnu")
+                    + " / <strong>Nombre de cas :</strong> " + count;
             i++;
         }
         return ok(Json.toJson(result));
@@ -125,7 +133,15 @@ public class Search extends Controller {
         } else {
             String[] result = new String[dispositif.Effet_indesirables.size()];
             for (int i = 0; i < result.length; i++) {
-                result[i] = dispositif.Effet_indesirables.get(i).getLabel();
+                String label = dispositif.Effet_indesirables.get(i).getLabel();
+                int count = Declaration.find.where().eq("effet_ind", label).findRowCount();
+                Declaration firstDeclaration = Declaration.find.where().eq("effet_ind", label).orderBy("date asc").setMaxRows(1).findUnique();
+                Declaration lastDeclaration = Declaration.find.where().eq("effet_ind", label).orderBy("date desc").setMaxRows(1).findUnique();
+
+                result[i] = label
+                        + " / <strong>Premier cas :</strong> " + (firstDeclaration != null? firstDeclaration.getDate(): "Inconnu")
+                        + " /  <strong>Dernier cas :</strong> " + (lastDeclaration != null? lastDeclaration.getDate(): "Inconnu")
+                        + " / <strong>Nombre de cas :</strong> " + count;
             }
             return ok(Json.toJson(result));
         }
@@ -167,7 +183,14 @@ public class Search extends Controller {
         String[] result = new String[effets.size()];
         int i = 0;
         for (Effet_indesirable e : effets) {
-            result[i] = e.getLabel();
+            int count = Declaration.find.where().eq("effet_ind", e.getLabel()).findRowCount();
+            Declaration firstDeclaration = Declaration.find.where().eq("effet_ind", e.getLabel()).orderBy("date asc").setMaxRows(1).findUnique();
+            Declaration lastDeclaration = Declaration.find.where().eq("effet_ind", e.getLabel()).orderBy("date desc").setMaxRows(1).findUnique();
+
+            result[i] = e.getLabel()
+                    + " / <strong>Premier cas :</strong> " + (firstDeclaration != null? firstDeclaration.getDate(): "Inconnu")
+                    + " /  <strong>Dernier cas :</strong> " + (lastDeclaration != null? lastDeclaration.getDate(): "Inconnu")
+                    + " / <strong>Nombre de cas :</strong> " + count;
             i++;
         }
 
