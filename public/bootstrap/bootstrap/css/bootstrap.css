@@ -2149,7 +2149,7 @@ table {
 
 .table-hover tbody tr:hover > td,
 .table-hover tbody tr:hover > th {
-  background-color: #07f5db;
+  background-color: #f55840;
 }
 
 table td[class*="span"],
