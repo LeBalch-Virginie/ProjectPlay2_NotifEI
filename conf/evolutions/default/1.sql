@@ -21,6 +21,16 @@ create table conservateur (
   constraint pk_conservateur primary key (id))
 ;
 
+create table declaration (
+  id                        bigint auto_increment not null,
+  date                      datetime,
+  user                      varchar(255),
+  effet_ind                 varchar(255),
+  produit                   varchar(255),
+  region                    varchar(255),
+  constraint pk_declaration primary key (id))
+;
+
 create table dispo_medical (
   id                        bigint auto_increment not null,
   nom                       varchar(255),
@@ -295,6 +305,8 @@ drop table hierarchie_classe_pharmaco;
 drop table conservateur;
 
 drop table conservateur_produit_cosmetique;
+
+drop table declaration;
 
 drop table dispo_medical;
 
