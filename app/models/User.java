@@ -29,6 +29,14 @@ public class User extends Model {
 
     public String region;
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getName() {
         return name;
     }
@@ -53,6 +61,13 @@ public class User extends Model {
         this.isAdmin = isAdmin;
     }
 
+    public String getRegion() {
+        return region;
+    }
+
+    public void setRegion(String region) {
+        this.region = region;
+    }
 
 
     public static Model.Finder<String,User> find =

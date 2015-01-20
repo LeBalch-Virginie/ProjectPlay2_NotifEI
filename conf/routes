@@ -99,6 +99,8 @@ POST        /Conservateur/enregistrer/:id               controllers.Conservateur
 GET         /Conservateur/list                          controllers.Conservateurs.list()
 GET         /Conservateur/recherche/:nom                controllers.Conservateurs.search(nom)
 
+GET         /utilisateurs                               controllers.Users.index()
+
 # Authentication
 GET         /login                                      controllers.Authentication.login()
 POST        /login                                      controllers.Authentication.authenticate()

@@ -11,8 +11,6 @@ import play.mvc.Security;
  * Created by virginie on 20/01/2015.
  */
 public class Users extends Controller {
-
-    /*
     @Security.Authenticated(Secured.class)
     public static Result index() {
         User user = User.find.byId(request().username());
@@ -20,11 +18,11 @@ public class Users extends Controller {
             return Results.forbidden("Need to be admin");
         }
         return ok(views.html.User.index.render(
-                User.find.orderBy("id").findList(),
-                User.find.byId(request().username())
+                User.find.byId(request().username()),
+                User.find.orderBy("email").findList()
         ));
     }
-
+/*
     @Security.Authenticated(Secured.class)
     public static Result edit(Long id) {
         User user = User.find.byId(request().username());
@@ -66,5 +64,5 @@ public class Users extends Controller {
         }
         return redirect(controllers.routes.Application.index());
     }
-    */
+*/
 }
