@@ -2008,11 +2008,15 @@ table {
 
 .table th,
 .table td {
-  padding: 8px;
+  padding: 10px;
   line-height: 20px;
   text-align: left;
   vertical-align: top;
   border-top: 1px solid #dddddd;
+}
+
+.table tr{
+  margin: 30px;
 }
 
 .table th {

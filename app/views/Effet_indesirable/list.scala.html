@@ -7,8 +7,14 @@
 
     <form action="" id="effets-search">
         <input name="label" placeholder="label">
-        <button class="btn" type="submit">Ajouter une substance</button>
+        <button class="btn" type="submit">Rechercher une substance</button>
     </form>
+
+    <a class="btn" href="@routes.Search.index()">effet indesirable vis a vis d'autre produit </a>
+
+    <br/>
+    <br/>
+
 
     <table id="effets-results" class="table table-striped table-bordered table-hover table-condensed">
         <thead>
@@ -18,4 +24,5 @@
         </thead>
         <tbody></tbody>
     </table>
+
 }

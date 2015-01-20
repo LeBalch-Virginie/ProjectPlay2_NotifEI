@@ -6,25 +6,29 @@
 
     <table class="container">
         <tr>
-            <td><a class="brand" href="@routes.Substances.list()">Consulter les substances </br> <img class="img-circle" src=@routes.Assets.at("images/substance.png")></a></td>
+            <td><a href="@routes.Substances.list()">Consulter les substances </br> <img class="img-circle" src=@routes.Assets.at("images/substance.png")></a></td>
             <td><a href="@routes.Produit_cosmetiques.list()">Consulter les produits cosmetiques </br>  <img class="img-circle" src=@routes.Assets.at("images/produit_cosmetique.png")></a></td>
             <td><a href="@routes.Medicaments.list()">Consulter les médicaments </br> <img class="img-circle" src=@routes.Assets.at("images/medoc.png")></a></td>
+
         </tr>
+        <br/>
         <tr>
             <td><a href="@routes.Dispo_medicaux.list()">Consulter les dispositifs médicaux </br> <img class="img-circle" src=@routes.Assets.at("images/dispositif_medicaux.jpg")></a></td>
             <td><a href="@routes.Effet_indesirables.list()">Consulter les effets indésirables </br>  <img class="img-circle" src=@routes.Assets.at("images/Fatigue.png")></a></td>
             <td><a href="@routes.Excipients.list()">Consulter les excipients </br> <img class="img-circle" src=@routes.Assets.at("images/Excipients.png")></a></td>
 
         </tr>
+        <br/>
         <tr>
             <td><a href="@routes.Conservateurs.list()">Consulter les conservateurs </br> <img class="img-circle" src=@routes.Assets.at("images/conservateur.jpg")></a></td>
             <td><a href="@routes.Parabenes.list()">Consulter les parabenes </br> <img class="img-circle" src=@routes.Assets.at("images/paraben.jpg")></a></td>
             <td><a href="@routes.Principe_actifs.list()">Consulter les principes actifs </br> <img class="img-circle" src=@routes.Assets.at("images/principes.jpg")></a></td>
         </tr>
+        <br/>
     </table>
 
     </br>
     </br>
-    <a class="btn" href="@routes.Search.index()">effet indesirable vis a vis d'autre produit </a>
+
 
 }
