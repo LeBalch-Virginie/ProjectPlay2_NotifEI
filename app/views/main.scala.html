@@ -19,7 +19,7 @@
                     <a class="brand" href="@routes.Application.index()">Accueil <img src=@routes.Assets.at("images/accueil.jpg")></a>
                     <ul class="nav">
                         @if(user != null) {
-                            <li><a class="brand" href="@routes.Application.notifierEi()">Notifier un efffet indésirable</a></li>
+                            <li><a class="brand" href="@routes.Application.notifierEi()">Notifier un effet indésirable</a></li>
                             @if(user.isAdmin) {
                                 <li><a class="brand" href="@routes.Application.administration()">Administration</a></li>
                             }
