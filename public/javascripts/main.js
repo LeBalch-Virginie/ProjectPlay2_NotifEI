@@ -2,7 +2,7 @@ jQuery(function($) {
     $("#medicament-search").keyup(function() {
         if ($(this).val() != "") {
             $.getJSON(
-                "autocomplete/medicament/" + $(this).val(),
+                "/autocomplete/medicament/" + $(this).val(),
                 function(data) {
                     $("#medicament-search").autocomplete({
                         source: data
