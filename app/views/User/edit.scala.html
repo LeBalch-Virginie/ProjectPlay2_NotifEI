@@ -1,0 +1,63 @@
+@(user: User, userForm: Form[User], user2: User)
+
+@import helper._
+
+@main("Modifier une substance", user) {
+      <p>Utilisateur: @user2.getEmail</p>
+
+      @if(userForm.hasGlobalErrors) {
+            <p class="error">@userForm.globalError.message</p>
+      }
+
+        @for(k <- userForm.errors.keySet) {
+            @for(l <- userForm.errors.get(k)) {
+                  <p>!@k!@l.message!</p>
+            }
+        }
+
+      @form(routes.Users.update(user2.getEmail)) {
+            @for(error <- userForm("name").errors) {
+                  <p class="error">@error.message</p>
+            }
+            @inputText(userForm("name"))
+
+            @for(error <- userForm("typeUser").errors) {
+                  <p class="error">@error.message</p>
+            }
+            @select(
+                  userForm("typeUser"),
+                  options(
+                        ("patient", "Patient"),
+                        ("medecin", "Médecin"),
+                        ("association_patients", "Association de patients"),
+                        ("medecin_hospitalier", "Médecin hospitalier"),
+                        ("medecin_de_ville", "Médecin de ville"),
+                        ("crpv", "CRPV"),
+                        ("cnpv", "CNPV"),
+                        ("laboratoire_pharmaceutique", "Laboratoire pharmaceutique"),
+                        ("laboratoire_cosmetique", "Laboratoire cosmetique")
+                  )
+            )
+
+            @for(error <- userForm("region").errors) {
+                  <p class="error">@error.message</p>
+            }
+            @select(
+                  userForm("region"),
+                  options(
+                        ("Alsace-Lorraine", "Alsace-Lorraine"),
+                        ("Aquitaine-Poitou", "Aquitaine-Poitou"),
+                        ("Auvergne-Rhône", "Auvergne-Rhône"),
+                        ("Bourgogne-Franche-Comté", "Bourgogne-Franche-Comté"),
+                        ("Bretagne", "Bretagne"),
+                        ("Grand Paris", "Grand Paris"),
+                        ("Languedoc-Roussillon", "Languedoc-Roussillon"),
+                        ("Nord-Pas-De-Calais", "Nord-Pas-De-Calais"),
+                        ("Normandie", "Normandie"),
+                        ("Paca-Corse", "Paca-Corse"),
+                        ("Val de Loire", "Val de Loire")
+                  )
+            )
+            <button class="btn" type="submit" value="Update">Modifier</button>
+        }
+}

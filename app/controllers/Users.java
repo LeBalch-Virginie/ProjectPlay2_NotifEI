@@ -7,6 +7,8 @@ import play.mvc.Result;
 import play.mvc.Results;
 import play.mvc.Security;
 
+import java.util.HashMap;
+
 /**
  * Created by virginie on 20/01/2015.
  */
@@ -22,47 +24,44 @@ public class Users extends Controller {
                 User.find.orderBy("email").findList()
         ));
     }
-/*
+
     @Security.Authenticated(Secured.class)
-    public static Result edit(Long id) {
+    public static Result edit(String email) {
         User user = User.find.byId(request().username());
         if (!user.isAdmin) {
             return Results.forbidden("Need to be admin");
         }
-        User user2 = User.find.where().idEq(id).findUnique();
+
+        User user2 = User.find.where().idEq(email).findUnique();
         Form<User> editForm = Form.form(User.class).fill(user2);
-        return ok(views.html.User.edit.render(user2, editForm, user));
+        return ok(views.html.User.edit.render(user, editForm, user2));
     }
 
     @Security.Authenticated(Secured.class)
-    public static Result update(Long id) {
+    public static Result update(String email) {
         User user = User.find.byId(request().username());
         if (!user.isAdmin) {
             return Results.forbidden("Need to be admin");
         }
-        Form<User> filledForm = Form.form(User.class).bindFromRequest();
-        if (filledForm.hasErrors()) {
-            User user2 = User.find.where().idEq(id).findUnique();
-            return badRequest(views.html.Substance.edit.render(user2, filledForm, user));
-        } else {
-            User user2 = filledForm.get();
-            user2.setId(id);
-            user2.update();
-            return redirect(controllers.routes.Application.index());
-        }
+        User oldUser = User.find.byId(email);
+        Form<User> filledForm = Form.form(User.class).fill(oldUser).bindFromRequest();
+        oldUser.setName(filledForm.data().get("name"));
+        oldUser.setTypeUser(filledForm.data().get("typeUser"));
+        oldUser.setRegion(filledForm.data().get("region"));
+        oldUser.update();
+        return redirect(controllers.routes.Users.index());
     }
 
     @Security.Authenticated(Secured.class)
-    public static Result delete(Long id) {
+    public static Result delete(String email) {
         User user = User.find.byId(request().username());
         if (!user.isAdmin) {
             return Results.forbidden("Need to be admin");
         }
-        final User user2 = User.find.byId(id);
+        final User user2 = User.find.byId(email);
         if (user2 != null) {
             user2.delete();
         }
-        return redirect(controllers.routes.Application.index());
+        return redirect(controllers.routes.Users.index());
     }
-*/
 }
