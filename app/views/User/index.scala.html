@@ -12,16 +12,18 @@
                 <th>nom</th>
                 <th>Type</th>
                 <th>Région</th>
+                <th>Modifier</th>
                 <th>Supprimer</th>
             </tr>
         </thead>
         <tbody>
             @for(u <- users) {
                 <tr>
-                    <td><a href="@routes.Users.edit(u.getEmail)">@u.getEmail</a></td>
-                    <td><a href="@routes.Users.edit(u.getEmail)">@u.getName()</a></td>
-                    <td><a href="@routes.Users.edit(u.getEmail)">@u.getTypeUser()</a></td>
-                    <td><a href="@routes.Users.edit(u.getEmail)">@u.getRegion()</a></td>
+                    <td>@u.getEmail</td>
+                    <td>@u.getName()</td>
+                    <td>@u.getTypeUser()</td>
+                    <td>@u.getRegion()</td>
+                    <td><a href="@routes.Users.edit(u.getEmail)">Modifier</a></td>
                     <td><a href="@routes.Users.delete(u.getEmail)">Supprimer</a></td>
                 </tr>
             }
