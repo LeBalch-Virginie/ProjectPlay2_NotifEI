@@ -10,7 +10,7 @@ GET         /notifier                                   controllers.Application.
 #GET         /login                    controllers.Application.login()
 #POST        /login                    controllers.Application.authenticate()
 
-GET         /declaration                                  controllers.Declarations.index()
+GET         /declaration                                controllers.Declarations.index()
 
 GET         /recherche                                  controllers.Search.index()
 POST        /recherche/medicament                       controllers.Search.fromMedicament()

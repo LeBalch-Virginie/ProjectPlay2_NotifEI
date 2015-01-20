@@ -1,23 +1,7 @@
 # Users
 
 users:
-    - !!models.User
-        email:      admin@gmail.com
-        name:       admin
-        password:   admin
-        isAdmin:    true
 
-    - !!models.User
-        email:      ph.charriere@gmail.com
-        name:       k33g
-        password:   play
-        isAdmin:    false
-
-    - !!models.User
-        email:      bob@morane.com
-        name:       bob
-        password:   indochine
-        isAdmin:    false
 
 
 

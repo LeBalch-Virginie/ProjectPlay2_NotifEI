@@ -24,10 +24,9 @@ create table conservateur (
 create table declaration (
   id                        bigint auto_increment not null,
   date                      datetime,
-  user                      varchar(255),
+  user_email                varchar(255),
   effet_ind                 varchar(255),
   produit                   varchar(255),
-  region                    varchar(255),
   constraint pk_declaration primary key (id))
 ;
 
@@ -203,6 +202,8 @@ create table substance_classe_chimique (
   classe_chimique_code           varchar(255) not null,
   constraint pk_substance_classe_chimique primary key (substance_id, classe_chimique_code))
 ;
+alter table declaration add constraint fk_declaration_user_1 foreign key (user_email) references user (email) on delete restrict on update restrict;
+create index ix_declaration_user_1 on declaration (user_email);
 
 
 
