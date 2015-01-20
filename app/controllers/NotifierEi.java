@@ -26,6 +26,7 @@ public class NotifierEi extends Controller {
         if (!ei.medicaments.contains(medicament)) {
             ei.medicaments.add(medicament);
             ei.save();
+            flash("error", "Cette interaction est nouvelle.");
         } else {
             flash("error", "Cette interaction a déjà été déclarée.");
         }
@@ -58,6 +59,7 @@ public class NotifierEi extends Controller {
         if (!ei.Dispo_medicaux.contains(dispo_medical)) {
             ei.Dispo_medicaux.add(dispo_medical);
             ei.save();
+            flash("error", "Cette interaction est nouvelle.");
         } else {
             flash("error", "Cette interaction a déjà été déclarée.");
         }
@@ -90,6 +92,8 @@ public class NotifierEi extends Controller {
         if (!ei.produits_cosmetiques.contains(produit)) {
             ei.produits_cosmetiques.add(produit);
             ei.save();
+            flash("error", "Cette interaction est nouvelle.");
+
         } else {
             flash("error", "Cette interaction a déjà été déclarée.");
         }
