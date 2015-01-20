@@ -16,6 +16,12 @@ public class NotifierEi extends Controller {
 
     public static Result addEiMedicament() {
         Medicament medicament = Medicament.find.where().eq("nom", request().body().asFormUrlEncoded().get("medicament-search")[0]).findUnique();
+
+        if (medicament == null) {
+            flash("error", "Ce médicament n'existe pas.");
+            return redirect(controllers.routes.Application.notifierEi());
+        }
+
         String eiLabel = request().body().asFormUrlEncoded().get("ei-search")[0];
         Effet_indesirable ei = Effet_indesirable.find.where().eq("label", eiLabel).findUnique();
 
@@ -43,12 +49,17 @@ public class NotifierEi extends Controller {
             declaration.save();
         }
 
-
         return redirect(controllers.routes.Application.notifierEi());
     }
 
     public static Result addEiDispo() {
         Dispo_medical dispo_medical = Dispo_medical.find.where().eq("nom", request().body().asFormUrlEncoded().get("dispositif-search")[0]).findUnique();
+
+        if (dispo_medical == null) {
+            flash("error", "Ce dispositif médical n'existe pas.");
+            return redirect(controllers.routes.Application.notifierEi());
+        }
+
         String eiLabel = request().body().asFormUrlEncoded().get("ei-search")[0];
         Effet_indesirable ei = Effet_indesirable.find.where().eq("label", eiLabel).findUnique();
 
@@ -82,6 +93,12 @@ public class NotifierEi extends Controller {
 
     public static Result addEiproduit() {
         Produit_cosmetique produit = Produit_cosmetique.find.where().eq("nom", request().body().asFormUrlEncoded().get("cosmetique-search")[0]).findUnique();
+
+        if (produit == null) {
+            flash("error", "Ce produit codmétique n'existe pas.");
+            return redirect(controllers.routes.Application.notifierEi());
+        }
+
         String eiLabel = request().body().asFormUrlEncoded().get("ei-search")[0];
         Effet_indesirable ei = Effet_indesirable.find.where().eq("label", eiLabel).findUnique();
 
